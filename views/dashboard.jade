@@ -1,0 +1,67 @@
+extends layout
+
+block body
+  script.
+    var token = ("#{user.customData.token}")
+    var device0id = ("#{user.customData.device0id}")
+    var device0name = ("#{user.customData.device0name}")
+    var device0con = ("#{user.customData.device0con}")
+    var device0var = ("#{user.customData.device0var}")
+    var device0fun = ("#{user.customData.device0fun}")
+    var device1id = ("#{user.customData.device1id}")
+    var device1name = ("#{user.customData.device1name}")
+    var device1con = ("#{user.customData.device1con}")
+    var device1var = ("#{user.customData.device1var}")
+    var device1fun = ("#{user.customData.device1fun}")
+    var device2id = ("#{user.customData.device2id}")
+    var device2name = ("#{user.customData.device2name}")
+    var device2con = ("#{user.customData.device2con}")
+    var device2var = ("#{user.customData.device2var}")
+    var device2fun = ("#{user.customData.device2fun}")
+    var device3id = ("#{user.customData.device3id}")
+    var device3name = ("#{user.customData.device3name}")
+    var device3con = ("#{user.customData.device3con}")
+    var device3var = ("#{user.customData.device3var}")
+    var device3fun = ("#{user.customData.device3fun}")
+  .settings
+    .row
+      .col-lg-12
+        .jumbotron
+          //This should prolly happen on page load...?
+          button(onclick='getDevices()') Get Devices?
+      .col-lg-5
+        h4 DEVICE 0
+        button(onclick='getSpark()') Refresh Functions and Variables?
+        h6 ID: #{user.customData.device0id}
+        h6 Name: #{user.customData.device0name}
+        h6 Connected: #{user.customData.device0con}
+        h6 Variables: #{user.customData.device0var}
+        h6 Functions: #{user.customData.device0fun}
+      .col-lg-5
+        h4 DEVICE 1
+        button(onclick='refreshDevice1()') Refresh Functions and Variables?
+        h6 ID: #{user.customData.device1id}
+        h6 Name: #{user.customData.device1name}
+        h6 Connected: #{user.customData.device1con}
+        h6 Variables: #{user.customData.device1var}
+        h6 Functions: #{user.customData.device1fun}
+      .col-lg-5
+        h4 DEVICE 2
+        button(onclick='refreshDevice2()') Refresh Functions and Variables?
+        h6 ID: #{user.customData.device2id}
+        h6 Name: #{user.customData.device2name}
+        h6 Connected: #{user.customData.device2con}
+        h6 Variables: #{user.customData.device2var}
+        h6 Functions: #{user.customData.device2fun}
+      .col-lg-5
+        h4 DEVICE 3
+        button(onclick='refreshDevice3()') Refresh Functions and Variables?
+        h6 ID: #{user.customData.device3id}
+        h6 Name: #{user.customData.device3name}
+        h6 Connected: #{user.customData.device3con}
+        h6 Variables: #{user.customData.device3var}
+        h6 Functions: #{user.customData.device3fun}
+    #footer
+      .jumbotron
+      h6 This is an open source project. Fork it on github <a href="https://github.com/baird/flare">here</a>.
+      #spinner

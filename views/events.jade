@@ -1,0 +1,31 @@
+extends layout
+
+block body
+  script.
+    var token = ("#{user.customData.token}")
+    var deviceID = ("#{user.customData.deviceID}")
+  .dashboard
+    .row
+      .col-lg-12
+        .jumbotron        
+          //Start Connection Button 
+          button(onclick='start()') Connect
+          .container
+            .row
+              #box1.col-md-4
+                h4#title1 Current Color
+                span#colorSpan
+                br
+                span#colorTimeSpan
+              #box2.col-md-4
+                h4#title2 Current Score
+                span#scoreSpan
+                br
+                span#scoreTimeSpan
+              #box3.col-md-4
+                h4#title3 Top Velocity
+                span#velocitySpan
+                br
+                span#velocityTimeSpan
+    #footer
+      h6 This is an open source project. Fork it on github <a href="https://github.com/baird/flare">here</a>.
