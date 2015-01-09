@@ -6,8 +6,8 @@ function start() {
     document.getElementById("scoreSpan").innerHTML = "Waiting for your Spark to update...";
     document.getElementById("velocitySpan").innerHTML = "Waiting for your Spark to update...";       
 
-
-    //var deviceID = "xxxx";
+    // if needed to test
+    //var deviceID = "xxxx"; 
     //var accessToken = "xxxx";
     var eventSource = new EventSource("https://api.spark.io/v1/devices/" + deviceID + "/events/?access_token=" + token);
 
@@ -42,7 +42,7 @@ function start() {
         scoreTimeSpan.style.fontSize = "9px";
     }, false);
 
-    // Box 3 High Velocity
+    // Box 3 High Velocity (this is really just current score, needed a third dataset to publish)
 
     eventSource.addEventListener('topVelocity', function(e) {
         var rawData = JSON.parse(e.data);
