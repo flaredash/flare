@@ -1,29 +1,6 @@
 /*
-Sorry for the spaghetti here...I was in the middle of some serious debugging. I'll get this cleaned up. One issue I've been having (and the reason a few of these sections are commented out) is a 503 timeout on Ajax calls. I'm not sure if this is caused by pushing to Stormpath customdata, some syntax issue or what. It seems to be corrected by only doing one or two data pushes at a time rather than all at once (heroku has a 30 second timeout). I'll plan to break these out into seperate functions rather than batch as I'd like to. Also, the spin animation was just a quick fix to illustrate the wait that is often experienced when calling Spark. This should probably be moved to a different file. Also, sorry for the design xD.
+Sorry for the spaghetti here...I was in the middle of some serious debugging. I'll get this cleaned up. One issue I've been having (and the reason a few of these sections are commented out) is a 503 timeout on Ajax calls. I'm not sure if this is caused by pushing to Stormpath customdata, some syntax issue or what. It seems to be corrected by only doing one or two data pushes at a time rather than all at once (heroku has a 30 second timeout). I'll plan to break these out into seperate functions rather than batch as I'd like to. Also, sorry for the design xD.
 */
-
-////////////////////////////////////////
-// spin.js config
-////////////////////////////////////////
-
-var opts = {
-  lines: 5, // The number of lines to draw
-  length: 40, // The length of each line
-  width: 30, // The line thickness
-  radius: 60, // The radius of the inner circle
-  corners: 1, // Corner roundness (0..1)
-  rotate: 0, // The rotation offset
-  direction: 1, // 1: clockwise, -1: counterclockwise
-  color: '#000', // #rgb or #rrggbb or array of colors
-  speed: 1, // Rounds per second
-  trail: 60, // Afterglow percentage
-  shadow: false, // Whether to render a shadow
-  hwaccel: false, // Whether to use hardware acceleration
-  className: 'spinner', // The CSS class to assign to the spinner
-  zIndex: 2e9, // The z-index (defaults to 2000000000)
-  top: '50%', // Top position relative to parent
-  left: '50%' // Left position relative to parent
-};
 
 /////////////////////////////////////////
 // Save a token from Spark to Stormpath
