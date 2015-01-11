@@ -1,26 +1,6 @@
 /*
-Sorry for the spaghetti here...I was in the middle of some serious debugging. I'll get this cleaned up. One issue I've been having (and the reason a few of these sections are commented out) is a 503 timeout on Ajax calls. I'm not sure if this is caused by pushing to Stormpath customdata, some syntax issue or what. It seems to be corrected by only doing one or two data pushes at a time rather than all at once (heroku has a 30 second timeout). I'll plan to break these out into seperate functions rather than batch as I'd like to. Also, sorry for the design xD.
+One issue I've been having (and the reason a few of these sections are commented out) is a 503 timeout on Ajax calls. I'm not sure if this is caused by pushing to Stormpath customdata, some syntax issue or what. It seems to be corrected by only doing one or two data pushes at a time rather than all at once (heroku has a 30 second timeout). I'll plan to break these out into seperate functions rather than batch as I'd like to.
 */
-
-/////////////////////////////////////////
-// Save a token from Spark to Stormpath
-/////////////////////////////////////////
-
-function saveToken() {
-
-  sparkLogin(function(data) {
-    window.token = data["access_token"];
-    console.log('Grabbed token from Spark: ' + token);
-    $.ajax({
-    type: 'POST',
-    url: '/savetoken',
-    data: { token: window.token },
-    success: function() {
-      console.log('Saved token to SP database: ' + token);
-    }
-  })
-  });
-}
 
 ////////////////////////////////////////
 // General check with Spark to get all
@@ -40,7 +20,7 @@ function getDevices() {
         // saveD0name();
         // saveD0con();
 
-      // Save devices to Stormpath
+      // Save (2) devices to Stormpath
 
       function saveDevices() {
         window.device0id = devices[0]["id"];
@@ -65,19 +45,16 @@ function getDevices() {
             console.log('Done fetching 2 devices.');
           }
 
-          //, device0name: window.device0name, device0con: window.device0con, device1id: window.device1id, device1name: window.device1name, device1con: window.device1con, device2id: window.device2id, device2name: window.device2name, device2con: window.device2con
+// , device0name: window.device0name, device0con: window.device0con
 
           $.ajax({
           type: 'POST',
-          url: '/savedevices',
+          url: '/savedevice0',
           data: { device0id: window.device0id },
             success: function() {
               console.log('Saved device0id to Stormpath: ' + device0id);
               // console.log('Saved device0name to Stormpath: ' + device0name);
               // console.log('Saved device0con to Stormpath: ' + device0con);
-              // console.log('Saved device1id to Stormpath: ' + device1id);
-              // console.log('Saved device1name to Stormpath: ' + device1name);
-              // console.log('Saved device1con to Stormpath: ' + device1con);
             }
           })
       }
@@ -102,10 +79,10 @@ function getSpark() {
   var requestURL = "https://api.spark.io/v1/devices/" + device0id + "/?access_token=" + token;
     $.getJSON(requestURL, function(data) {
       console.log(data);
-    //console.log('ID: ', data["id"]);
-    //console.log('Name: ', data["name"]);
-    //console.log('Connected: ', data["connected"]);
-    //console.log('Variables: ', data["variables"]);
+      console.log('ID: ', data["id"]);
+      console.log('Name: ', data["name"]);
+      console.log('Connected: ', data["connected"]);
+      console.log('Variables: ', data["variables"]);
 
       // // Save device0 "id" to Stormpath
       // window.device0ID = data["id"];
@@ -178,18 +155,4 @@ function getSpark() {
           .fail(function() {
             console.log( "getSpark request failed" );
           });
-}
-
-////////////////////////////////////////
-// Is this doing anything?
-////////////////////////////////////////
-
-function getToken() {
-  $.ajax({
-    type: 'get',
-    url: '/gettoken',
-    success: function (data) {
-        //console.log(data);
-    }
-  })
 }
