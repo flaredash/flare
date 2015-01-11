@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Flare spark demo - https://github.com/baird/flare
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // color value storage
 
 int rval = 0;
@@ -13,11 +17,6 @@ char color[64];
 
 char scoreStr[64];
 int score = 0;
-
-// velocity into string storage
-
-char velocityStr[64];
-int velocity = 50;
 
 // individual color increments
 
@@ -78,8 +77,8 @@ void loop() {
 // add to score to test
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if (score < 500) {
-  score += 3;
+if (score < 5000) {
+  score += 5;
   delay(5000);
 
   // push score
@@ -88,8 +87,6 @@ if (score < 500) {
   Spark.publish("currentColor", colorStr);
   sprintf(scoreStr, "%i", score);
   Spark.publish("currentScore", scoreStr);
-  sprintf(velocityStr, "%i", velocity);
-  Spark.publish("topVelocity", velocityStr);
 
   // console if needed
 
