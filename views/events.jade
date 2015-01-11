@@ -2,8 +2,9 @@ extends layout
 
 block body
   script.
-    var token = ("#{user.customData.token}")
-    var deviceID = ("#{user.customData.deviceID}")
+    var token = ("#{user.customData.token}")  // debug
+    var deviceID = ("#{user.customData.deviceID}") // debug
+    var device0ID = ("#{user.customData.deviceID}")
   .dashboard
     .row
       .col-lg-12
@@ -14,11 +15,15 @@ block body
             .row
               #box1.col-md-6
                 h4#title1 Current Color
+                span#colorIDSpan
+                br
                 span#colorSpan
                 br
                 span#colorTimeSpan
               #box2.col-md-6
                 h4#title2 Current Score
+                span#scoreIDSpan
+                br
                 span#scoreSpan
                 br
                 span#scoreTimeSpan
