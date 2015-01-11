@@ -51,23 +51,19 @@ app.post('/savetoken', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////
-// Save a few details about device0
+// Save basic details about device0
 ////////////////////////////////////////
 
-// Save device0
+// Save device0 id, name and connection status
 app.post('/savedevice0', stormpath.loginRequired, function(req, res) { 
   req.user.customData.device0id = req.body.device0id;
-  // req.user.customData.device0name = req.body.device0name;
-  // req.user.customData.device0con = req.body.device0con;
+  req.user.customData.device0name = req.body.device0name;
+  req.user.customData.device0con = req.body.device0con;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Spark device0 id: ' + req.user.customData.device0id + ' saved to SP custom data.');
-
-      //prevents app crash, dont include unless saved
-      // res.send('Spark device0 name: ' + req.user.customData.device0name + ' saved to SP custom data.');
-      // res.send('Spark device0 connection status: ' + req.user.customData.device0con + ' saved to SP custom data.');
+      res.send('Spark device0 id: ' + req.user.customData.device0id + ' id, name and connection status saved to SP custom data.');
     } else {
-      res.send('Error saving device0.');
+      res.send('Error saving device0 id, name and connection status.');
     }
   });
 });
@@ -80,10 +76,11 @@ app.post('/checkdevices', stormpath.loginRequired, function(req, res) {
   // req.user.customData.device1fun = req.body.device1fun;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Spark device0 variables: ' + req.user.customData.device0var + ' saved to SP custom data.');
-      res.send('Spark device0 functions: ' + req.user.customData.device0fun + ' saved to SP custom data.');
+      res.send('Spark device0 id: ' + req.user.customData.device0id + ' variables and functions saved to SP custom data.');
+      // res.send('Spark device0 variables: ' + req.user.customData.device0var + ' saved to SP custom data.');
+      // res.send('Spark device0 functions: ' + req.user.customData.device0fun + ' saved to SP custom data.');
     } else {
-      res.send('Error saving device0.');
+      res.send('Error saving device0 functions and variables.');
     }
   });
 });

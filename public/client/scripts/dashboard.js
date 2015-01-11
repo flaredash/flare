@@ -1,11 +1,10 @@
-/*
-One issue I've been having (and the reason a few of these sections are commented out) is a 503 timeout on Ajax calls. I'm not sure if this is caused by pushing to Stormpath customdata, some syntax issue or what. It seems to be corrected by only doing one or two data pushes at a time rather than all at once (heroku has a 30 second timeout). I'll plan to break these out into seperate functions rather than batch as I'd like to.
-*/
 
 ////////////////////////////////////////
 // General check with Spark to get all
 // device IDs, names and con status.
 ////////////////////////////////////////
+
+// Baird plans to make this more modular, calling a function to push data to SP as each device is iterated.
 
 function getDevices() {
   spark.login({accessToken: token});
@@ -45,16 +44,14 @@ function getDevices() {
             console.log('Done fetching 2 devices.');
           }
 
-// , device0name: window.device0name, device0con: window.device0con
-
           $.ajax({
           type: 'POST',
           url: '/savedevice0',
-          data: { device0id: window.device0id },
+          data: { device0id: window.device0id, device0name: window.device0name, device0con: window.device0con },
             success: function() {
               console.log('Saved device0id to Stormpath: ' + device0id);
-              // console.log('Saved device0name to Stormpath: ' + device0name);
-              // console.log('Saved device0con to Stormpath: ' + device0con);
+              console.log('Saved device0name to Stormpath: ' + device0name);
+              console.log('Saved device0con to Stormpath: ' + device0con);
             }
           })
       }
