@@ -51,7 +51,7 @@ app.post('/savetoken', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////
-// Save basic details about device0
+// Save basic details about devices
 ////////////////////////////////////////
 
 // Save device0 id, name and connection status
@@ -67,6 +67,24 @@ app.post('/savedevice0', stormpath.loginRequired, function(req, res) {
     }
   });
 });
+
+// Save device1 id, name and connection status
+app.post('/savedevice1', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device1id = req.body.device1id;
+  req.user.customData.device1name = req.body.device1name;
+  req.user.customData.device1con = req.body.device1con;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Spark device1 id: ' + req.user.customData.device1id + ' id, name and connection status saved to SP custom data.');
+    } else {
+      res.send('Error saving device1 id, name and connection status.');
+    }
+  });
+});
+
+////////////////////////////////////////////
+// Save variables and functions from devices
+////////////////////////////////////////////
 
 // Check devices functions and variables
 app.post('/checkdevices', stormpath.loginRequired, function(req, res) { 
