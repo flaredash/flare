@@ -1,10 +1,8 @@
 
-////////////////////////////////////////
-// General check with Spark to get all
-// device IDs, names and con status.
-////////////////////////////////////////
-
-// Baird plans to make this more modular, calling a function to push data to SP as each device is iterated.
+////////////////////////////////////////////////////////////////////////
+// General check with Spark to get all device IDs, names and con status,
+// (can't get variables or functions without specifying a device).
+////////////////////////////////////////////////////////////////////////
 
 function getDevices() {
   spark.login({accessToken: token});
@@ -13,53 +11,70 @@ function getDevices() {
 
     devicesPr.then(
       function(devices){
+
+        var devNum = devices["length"];  // length for use in iterating more efficiently
+        console.log(devNum);  // print length
+        
         console.log('Devices: ', devices);
         saveDevices();
-        // saveD0id();
-        // saveD0name();
-        // saveD0con();
 
-      // Save (2) devices to Stormpath
+      // Save devices to Stormpath
 
-      function saveDevices() {
-        window.device0id = devices[0]["id"];
-        window.device0name = devices[0]["name"];
-        window.device0con = devices[0]["connected"];
+        function saveDevices() {
+          window.device0id = devices[0]["id"];
+          window.device0name = devices[0]["name"];
+          window.device0con = devices[0]["connected"];
+          saveDevice0();
 
-          if (devices[1] != undefined) {
-            window.device1id = devices[1]["id"];
-            window.device1name = devices[1]["name"];
-            window.device1con = devices[1]["connected"];
-          }
-          else {
-            console.log('Done fetching 1 device.');
-          }
-
-          if (devices[2] != undefined) {
-            window.device2id = devices[2]["id"];
-            window.device2name = devices[2]["name"];
-            window.device2con = devices[2]["connected"];
-          }
-          else {
-            console.log('Done fetching 2 devices.');
-          }
-
-          $.ajax({
-          type: 'POST',
-          url: '/savedevice0',
-          data: { device0id: window.device0id, device0name: window.device0name, device0con: window.device0con },
-            success: function() {
-              console.log('Saved device0id to Stormpath: ' + device0id);
-              console.log('Saved device0name to Stormpath: ' + device0name);
-              console.log('Saved device0con to Stormpath: ' + device0con);
+            if (devices[1] != undefined) {
+              window.device1id = devices[1]["id"];
+              window.device1name = devices[1]["name"];
+              window.device1con = devices[1]["connected"];
+              saveDevice1()
             }
-          })
+            else {
+              console.log('Done fetching 1 device.');
+            }
+
+            if (devices[2] != undefined) {
+              window.device2id = devices[2]["id"];
+              window.device2name = devices[2]["name"];
+              window.device2con = devices[2]["connected"];
+            }
+            else {
+              console.log('Done fetching 2 devices.');
+            }
+        }
       }
-          },
-            function(err) {
-              console.log('List devices call failed: ', err);
-            }
-          );
+    );
+}
+
+function saveDevice0() {
+
+  $.ajax({
+  type: 'POST',
+  url: '/savedevice0',
+  data: { device0id: window.device0id, device0name: window.device0name, device0con: window.device0con },
+    success: function() {
+      console.log('Saved device0id to Stormpath: ' + device0id);
+      console.log('Saved device0name to Stormpath: ' + device0name);
+      console.log('Saved device0con to Stormpath: ' + device0con);
+    }
+  })
+}
+
+function saveDevice1() {
+
+  $.ajax({
+  type: 'POST',
+  url: '/savedevice1',
+  data: { device1id: window.device1id, device1name: window.device1name, device1con: window.device1con },
+    success: function() {
+      console.log('Saved device1id to Stormpath: ' + device1id);
+      console.log('Saved device1name to Stormpath: ' + device1name);
+      console.log('Saved device1con to Stormpath: ' + device1con);
+    }
+  })
 }
 
 ////////////////////////////////////////
@@ -81,36 +96,6 @@ function getSpark() {
       console.log('Connected: ', data["connected"]);
       console.log('Variables: ', data["variables"]);
 
-      // // Save device0 "id" to Stormpath
-      // window.device0ID = data["id"];
-      //   $.ajax({
-      //   type: 'POST',
-      //   url: '/savedevice0id',
-      //   data: { device0ID: window.device0ID },
-      //     success: function() {
-      //       console.log('Saved device0ID to Stormpath: ' + device0ID);
-      //     }
-      //   })
-      // // Save device0 "name" to Stormpath
-      // window.device0name = data["name"];
-      //   $.ajax({
-      //   type: 'POST',
-      //   url: '/savedevice0name',
-      //   data: { device0name: window.device0name },
-      //     success: function() {
-      //       console.log('Saved device0name to Stormpath: ' + device0name);
-      //     }                         
-      //   })
-      // // Save device0 "connection" to Stormpath
-      // window.device0con = data["connected"];
-      //   $.ajax({
-      //   type: 'POST',
-      //   url: '/savedevice0con',
-      //   data: { device0con: window.device0con },
-      //     success: function() {
-      //       console.log('Saved device0con to Stormpath: ' + device0con);
-      //     }                         
-      //   })
 
       // Save device0 "variables" and "functions" to Stormpath
       window.device0var = data["variables"];
@@ -130,20 +115,8 @@ function getSpark() {
             for (var element in func) {
             console.log(element + ": " + func[element]);
             }
-
-            //console.log('Saved device0var to Stormpath: ' + device0var);
           }                         
         })
-    //   // Save device0 "functions" to Stormpath
-    //   window.device0fun = data["functions"];
-    //     $.ajax({
-    //     type: 'POST',
-    //     url: '/savedevice0fun',
-    //     data: { device0fun: window.device0fun },
-    //       success: function() {
-    //         console.log('Saved device0fun to Stormpath: ' + device0fun);
-    //       }                         
-    //     })
     })
           .done(function() {
             //stop spinner
