@@ -14,38 +14,82 @@ function getDevices() {
 
         var devNum = devices["length"];  // length for use in iterating more efficiently
         console.log(devNum);  // print length
-        
+
         console.log('Devices: ', devices);
         saveDevices();
 
       // Save devices to Stormpath
 
         function saveDevices() {
-          window.device0id = devices[0]["id"];
-          window.device0name = devices[0]["name"];
-          window.device0con = devices[0]["connected"];
-          saveDevice0();
+          for (i = 0; i < devNum; i++) { 
+            // var idHold = window.device + i + 'id';
+            // var nameHold = window.device + i + 'name';
+            // var conHold = window.device + i + 'con';
 
-            if (devices[1] != undefined) {
-              window.device1id = devices[1]["id"];
-              window.device1name = devices[1]["name"];
-              window.device1con = devices[1]["connected"];
-              saveDevice1()
-            }
-            else {
-              console.log('Done fetching 1 device.');
-            }
+            var idWindow = 'window.device' + i + 'id';
+            var nameWindow = 'window.device' + i + 'name';
+            var conWindow = 'window.device' + i + 'con';
+            console.log('window before: ' + idWindow);
+            idWindow = devices[i]["id"];
+            nameWindow = devices[i]["name"];
+            conWindow = devices[i]["connected"];
+            console.log('window after: ' + idWindow);
 
-            if (devices[2] != undefined) {
-              window.device2id = devices[2]["id"];
-              window.device2name = devices[2]["name"];
-              window.device2con = devices[2]["connected"];
-            }
-            else {
-              console.log('Done fetching 2 devices.');
-            }
+            var idWrite = 'device' + i + 'id';
+            var nameWrite = 'device' + i + 'name';
+            var conWrite = 'device' + i + 'con';
+            
+            // var idRead = devices[i]["id"];
+            // var nameRead = devices[i]["name"];
+            // var conRead = devices[i]["connected"];
+            // idHold = idRead;
+            // nameHold = nameRead;
+            // conHold = conRead;
+            
+            
+            // console.log('idWrite: ' + idWrite);
+            // console.log('window: ' + idWindow);
+
+            $.ajax({
+            type: 'POST',
+            url: '/savedevice' + i,
+            // data: { idWrite: devices[i]["id"], nameWrite: devices[i]["name"], conWrite: devices[i]["connected"] },
+            // data: { device0id: window.device0id, device0name: window.device0name, device0con: window.device0con },
+              success: function() {
+                console.log('Saved ' + devNum + ' devices.');
+    }
+  })
+          }
         }
       }
+
+
+    //     function saveDevices() {
+    //       window.device0id = devices[0]["id"];
+    //       window.device0name = devices[0]["name"];
+    //       window.device0con = devices[0]["connected"];
+    //       saveDevice0();
+
+    //         if (devices[1] != undefined) {
+    //           window.device1id = devices[1]["id"];
+    //           window.device1name = devices[1]["name"];
+    //           window.device1con = devices[1]["connected"];
+    //           saveDevice1()
+    //         }
+    //         else {
+    //           console.log('Done fetching 1 device.');
+    //         }
+
+    //         if (devices[2] != undefined) {
+    //           window.device2id = devices[2]["id"];
+    //           window.device2name = devices[2]["name"];
+    //           window.device2con = devices[2]["connected"];
+    //         }
+    //         else {
+    //           console.log('Done fetching 2 devices.');
+    //         }
+    //     }
+    //   }
     );
 }
 
