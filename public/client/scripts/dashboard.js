@@ -65,6 +65,7 @@ function getSpark() {
       console.log('Name: ', data["name"]);
       console.log('Connected: ', data["connected"]);
       console.log('Variables: ', data["variables"]);
+      console.log('Version: ', data["cc3000_patch_version"]);
 
 
       // Save device0 "variables" and "functions" to Stormpath
