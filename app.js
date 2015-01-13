@@ -54,11 +54,13 @@ app.post('/savetoken', stormpath.loginRequired, function(req, res) {
 // Save basic details about devices
 ////////////////////////////////////////
 
+// Need to work on getting iteration here so only one chunk of code is needed to do all devices.
+
 // Save device0 id, name and connection status
 app.post('/savedevice0', stormpath.loginRequired, function(req, res) { 
-  req.user.customData.device0id = req.body.device0id;
-  req.user.customData.device0name = req.body.device0name;
-  req.user.customData.device0con = req.body.device0con;
+  req.user.customData.device0id = req.body.deviceid;
+  req.user.customData.device0name = req.body.devicename;
+  req.user.customData.device0con = req.body.devicecon;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Spark device0 id: ' + req.user.customData.device0id + ' id, name and connection status saved to SP custom data.');
@@ -70,9 +72,9 @@ app.post('/savedevice0', stormpath.loginRequired, function(req, res) {
 
 // Save device1 id, name and connection status
 app.post('/savedevice1', stormpath.loginRequired, function(req, res) { 
-  req.user.customData.device1id = req.body.device1id;
-  req.user.customData.device1name = req.body.device1name;
-  req.user.customData.device1con = req.body.device1con;
+  req.user.customData.device1id = req.body.deviceid;
+  req.user.customData.device1name = req.body.devicename;
+  req.user.customData.device1con = req.body.devicecon;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Spark device1 id: ' + req.user.customData.device1id + ' id, name and connection status saved to SP custom data.');

@@ -9,4 +9,4 @@ Currently hosted on http://heroku.com
 
 User Authentication API - http://stormpath.com
 
-Please push /spark.ino for a demo of the published events section
+Please push /spark.ino for a demo of the published events section (needs some functions to test)
