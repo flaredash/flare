@@ -3,6 +3,7 @@ extends layout
 block body
   script.
     var token = ("#{user.customData.token}")
+    var length = ("#{user.customData.length}")
     var device0id = ("#{user.customData.device0id}")
     var device0name = ("#{user.customData.device0name}")
     var device0con = ("#{user.customData.device0con}")
@@ -29,7 +30,7 @@ block body
         .jumbotron
           button(onclick='getDevices()') Get Devices?
       .col-md-6
-        h4 #{user.customData.device0name}
+        h4 Device 1: #{user.customData.device0name}
         button(onclick='getSpark()') Refresh?
         h6 ID: #{user.customData.device0id}
         h6 Version:
@@ -37,7 +38,7 @@ block body
         h6 Variables: #{user.customData.device0var}
         h6 Functions: #{user.customData.device0fun}
       .col-md-6
-        h4 #{user.customData.device1name}
+        h4 Device 2: #{user.customData.device1name}
         button(onclick='refreshDevice1()') Refresh?
         h6 ID: #{user.customData.device1id}
         h6 Version:
@@ -45,7 +46,7 @@ block body
         h6 Variables: #{user.customData.device1var}
         h6 Functions: #{user.customData.device1fun}
       .col-md-6
-        h4 #{user.customData.device2name}
+        h4 Device 3: #{user.customData.device2name}
         button(onclick='refreshDevice2()') Refresh?
         h6 ID: #{user.customData.device2id}
         h6 Version:
@@ -53,7 +54,7 @@ block body
         h6 Variables: #{user.customData.device2var}
         h6 Functions: #{user.customData.device2fun}
       .col-md-6
-        h4 #{user.customData.device3name}
+        h4 Device 4: #{user.customData.device3name}
         button(onclick='refreshDevice3()') Refresh?
         h6 ID: #{user.customData.device3id}
         h6 Version:
