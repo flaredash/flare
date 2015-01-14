@@ -51,6 +51,21 @@ app.post('/savetoken', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////
+// Save number of devices
+////////////////////////////////////////
+
+app.post('/savelength', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.length = req.body.length;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Saved number of devices: ' + req.user.customData.length);
+    } else {
+      res.send('Error saving token.');
+    }
+  });
+});
+
+////////////////////////////////////////
 // Save basic details about devices
 ////////////////////////////////////////
 
