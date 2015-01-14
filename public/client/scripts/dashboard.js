@@ -14,11 +14,21 @@ function getDevices() {
   devicesPr.then(
     function(devices) {
       var devNum = devices["length"]; // length for use in iterating
-      console.log('Devices: ', devices); // print devices
       saveDevices();
 
-      // Save devices to Stormpath
+      // Save number of devices
       function saveDevices() {
+        $.ajax({
+            type: 'POST',
+            url: '/savelength',
+            data: {
+              length: devNum
+            },
+            success: function() {
+              console.log('Saved length of ' + devNum);
+            }
+          })
+        // iterate through devices and save details
         for (i = 0; i < devNum; i++) {
           var idWindow = 'window.device' + i + 'id';
           var nameWindow = 'window.device' + i + 'name';
@@ -26,8 +36,6 @@ function getDevices() {
           idWindow = devices[i]["id"];
           nameWindow = devices[i]["name"];
           conWindow = devices[i]["connected"];
-
-          console.log('Device name: ' + nameWindow)
 
           $.ajax({
             type: 'POST',
@@ -38,7 +46,7 @@ function getDevices() {
               devicecon: conWindow
             },
             success: function() {
-              console.log('Saved ' + devNum + ' devices.');
+              console.log('Saved device(s)');
             }
           })
         }
@@ -63,10 +71,10 @@ function getSpark() {
       console.log(data);
       console.log('ID: ', data["id"]);
       console.log('Name: ', data["name"]);
+      console.log('Version: ', data["cc3000_patch_version"]);
       console.log('Connected: ', data["connected"]);
       console.log('Variables: ', data["variables"]);
-      console.log('Version: ', data["cc3000_patch_version"]);
-
+      console.log('Functions: ', data["functions"]);
 
       // Save device0 "variables" and "functions" to Stormpath
       window.device0var = data["variables"];
