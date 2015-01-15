@@ -58,9 +58,9 @@ app.post('/savelength', stormpath.loginRequired, function(req, res) {
   req.user.customData.length = req.body.length;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Saved number of devices: ' + req.user.customData.length);
+      res.send('Saved length of ' + req.user.customData.length + ' to SP custom data.');
     } else {
-      res.send('Error saving token.');
+      res.send('Error saving length.');
     }
   });
 });
@@ -189,7 +189,7 @@ app.post('/checkdevices', stormpath.loginRequired, function(req, res) {
 // Display a user's customdata
 ////////////////////////////////////////
 
-app.get('/gettoken', stormpath.loginRequired, function(req, res) {
+app.get('/getdetails', stormpath.loginRequired, function(req, res) {
   res.json(req.user);
 });
 
