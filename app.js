@@ -69,7 +69,7 @@ app.post('/savelength', stormpath.loginRequired, function(req, res) {
 // Save basic details about devices
 ////////////////////////////////////////
 
-// Need to work on getting iteration here so only one chunk of code is needed to do all devices.
+// Need to work on getting iteration here so only one chunk of code is needed to do all devices.Currently supports 4.
 
 // Save device0 id, name and connection status
 app.post('/savedevice0', stormpath.loginRequired, function(req, res) { 
@@ -78,7 +78,7 @@ app.post('/savedevice0', stormpath.loginRequired, function(req, res) {
   req.user.customData.device0con = req.body.devicecon;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Spark device0 id: ' + req.user.customData.device0id + ' id, name and connection status saved to SP custom data.');
+      res.send('Spark device0 name: ' + req.user.customData.device0name + ' id, name and connection status saved to SP custom data.');
     } else {
       res.send('Error saving device0 id, name and connection status.');
     }
@@ -92,9 +92,37 @@ app.post('/savedevice1', stormpath.loginRequired, function(req, res) {
   req.user.customData.device1con = req.body.devicecon;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Spark device1 id: ' + req.user.customData.device1id + ' id, name and connection status saved to SP custom data.');
+      res.send('Spark device1 name: ' + req.user.customData.device1name + ' id, name and connection status saved to SP custom data.');
     } else {
       res.send('Error saving device1 id, name and connection status.');
+    }
+  });
+});
+
+// Save device2 id, name and connection status
+app.post('/savedevice2', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device2id = req.body.deviceid;
+  req.user.customData.device2name = req.body.devicename;
+  req.user.customData.device2con = req.body.devicecon;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Spark device2 id: ' + req.user.customData.device2id + ' id, name and connection status saved to SP custom data.');
+    } else {
+      res.send('Error saving device2 id, name and connection status.');
+    }
+  });
+});
+
+// Save device3 id, name and connection status
+app.post('/savedevice3', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device3id = req.body.deviceid;
+  req.user.customData.device3name = req.body.devicename;
+  req.user.customData.device3con = req.body.devicecon;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Spark device3 id: ' + req.user.customData.device3id + ' id, name and connection status saved to SP custom data.');
+    } else {
+      res.send('Error saving device3 id, name and connection status.');
     }
   });
 });
