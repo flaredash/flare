@@ -14,10 +14,12 @@ function getDevices() {
   devicesPr.then(
     function(devices) {
       var devNum = devices["length"]; // length for use in iterating
+      console.log('Devices: ', devices); // print list of devices
+      saveLength();
       saveDevices();
 
       // Save number of devices
-      function saveDevices() {
+      function saveLength() {
         $.ajax({
             type: 'POST',
             url: '/savelength',
@@ -28,6 +30,9 @@ function getDevices() {
               console.log('Saved length of ' + devNum);
             }
           })
+      }
+
+      function saveDevices() {
         // iterate through devices and save details
         for (i = 0; i < devNum; i++) {
           var idWindow = 'window.device' + i + 'id';
@@ -36,6 +41,7 @@ function getDevices() {
           idWindow = devices[i]["id"];
           nameWindow = devices[i]["name"];
           conWindow = devices[i]["connected"];
+          console.log(i);
 
           $.ajax({
             type: 'POST',
@@ -46,7 +52,7 @@ function getDevices() {
               devicecon: conWindow
             },
             success: function() {
-              console.log('Saved device(s)');
+              console.log('Saved device: ' + nameWindow);
             }
           })
         }
@@ -56,10 +62,44 @@ function getDevices() {
 }
 
 ////////////////////////////////////////
+// Rename a device (currently D0)
+////////////////////////////////////////
+
+function renameDevice() {
+
+spark.login({
+    accessToken: token
+  });
+
+  var devicesPr = spark.listDevices();
+
+  devicesPr.then(
+    function(devices){
+      console.log('Devices: ', devices);
+
+        $.ajax({
+            type: 'PUT',
+            url: 'https://api.spark.io/v1/devices/' + device0id + '/?access_token=' + token,
+            data: {
+              name: 'Wheee'
+            },
+            success: function() {
+              console.log('Renamed device: ' + device0id);
+              getDevices();
+            }
+          })
+    },
+    function(err) {
+      console.log('API call failed: ', err);
+    }
+  );
+}
+
+////////////////////////////////////////
 // Get details on individual devices
 ////////////////////////////////////////
 
-function getSpark() {
+function getDetails() {
 
   //start spinner
   var spinner = new Spinner(opts).spin();
