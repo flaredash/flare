@@ -1,112 +1,138 @@
+////////////////////////////
+// Login to the Spark Cloud
+////////////////////////////
 
-////////////////////////////////////////////////////////////////////////
-// General check with Spark to get all device IDs, names and con status,
-// (can't get variables or functions without specifying a device).
-////////////////////////////////////////////////////////////////////////
-
-function getDevices() {
+function sparkLogin() {  
   spark.login({
     accessToken: token
   });
+}
 
+/////////////////////////////////////////////////////
+// Save number of devices and general device details 
+/////////////////////////////////////////////////////
+
+function getDevices() {
+  // sparkLogin();
+  saveDevices();
+  saveLength();
+}
+
+///////////////////////////////////
+// List all devices general details
+///////////////////////////////////
+
+function sparkList() {
+  var devicesPr = spark.listDevices();
+  devicesPr.then(
+    function(devices) {
+      console.log('Devices: ', devices);
+    }
+  );
+}
+
+/////////////////////////
+// Save length of devices
+/////////////////////////
+
+function saveLength() {
+  var listDevices = spark.listDevices();
+
+  listDevices.then(
+    function(devices) {
+      var devNum = devices["length"];
+        $.ajax({
+          type: 'POST',
+          url: '/savelength',
+          data: {
+            length: devNum
+          },
+          success: function() {
+            console.log('Saved length of ' + devNum);
+          }
+        })
+    }
+  );
+}
+
+////////////////////////////////////////
+// Save general info about all devices
+////////////////////////////////////////
+
+function saveDevices() {
+  sparkLogin();
   var devicesPr = spark.listDevices();
 
   devicesPr.then(
     function(devices) {
-      var devNum = devices["length"]; // length for use in iterating
-      console.log('Devices: ', devices); // print list of devices
-      saveLength();
-      saveDevices();
+      console.log('Devices: ', devices);
+      var devNum = devices["length"];
+      // iterate through devices and save details
+      for (i = 0; i < devNum; i++) {
+        var idWindow = 'window.device' + i + 'id';
+        var nameWindow = 'window.device' + i + 'name';
+        var conWindow = 'window.device' + i + 'con';
+        idWindow = devices[i]["id"];
+        nameWindow = devices[i]["name"];
+        conWindow = devices[i]["connected"];
+        console.log('Device' + i + ' name: ' + nameWindow);
+        console.log('Device' + i + ' id: ' + idWindow);
 
-      // Save number of devices
-      function saveLength() {
         $.ajax({
-            type: 'POST',
-            url: '/savelength',
-            data: {
-              length: devNum
-            },
-            success: function() {
-              console.log('Saved length of ' + devNum);
-            }
-          })
-      }
-
-      function saveDevices() {
-        // iterate through devices and save details
-        for (i = 0; i < devNum; i++) {
-          var idWindow = 'window.device' + i + 'id';
-          var nameWindow = 'window.device' + i + 'name';
-          var conWindow = 'window.device' + i + 'con';
-          idWindow = devices[i]["id"];
-          nameWindow = devices[i]["name"];
-          conWindow = devices[i]["connected"];
-          console.log(i);
-
-          $.ajax({
-            type: 'POST',
-            url: '/savedevice' + i,
-            data: {
-              deviceid: idWindow,
-              devicename: nameWindow,
-              devicecon: conWindow
-            },
-            success: function() {
-              console.log('Saved device: ' + nameWindow);
-            }
-          })
-        }
+          type: 'POST',
+          url: '/savedevice' + i,
+          data: {
+            deviceid: idWindow,
+            devicename: nameWindow,
+            devicecon: conWindow
+          },
+          success: function() {
+            console.log('Saved device(s)');
+          }
+        })
       }
     }
   );
 }
 
 ////////////////////////////////////////
-// Rename a device (currently D0)
+// Rename a device
 ////////////////////////////////////////
 
-function renameDevice() {
+// Need to handle non-network errors like name already in use
 
-spark.login({
-    accessToken: token
-  });
-
-  var devicesPr = spark.listDevices();
-
-  devicesPr.then(
-    function(devices){
-      console.log('Devices: ', devices);
+function renameDevice(anyDevice) {
+  sparkLogin();
 
         $.ajax({
             type: 'PUT',
-            url: 'https://api.spark.io/v1/devices/' + device0id + '/?access_token=' + token,
+            url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
             data: {
-              name: 'Wheee'
+            name: 'testname5'
             },
             success: function() {
-              console.log('Renamed device: ' + device0id);
-              getDevices();
+              console.log('Renamed device: ' + anyDevice);
+              //sparkList();
+              saveDevices();
+            },
+            error: function(err) {
+              console.log('Something went wrong: ', err);
             }
-          })
-    },
-    function(err) {
-      console.log('API call failed: ', err);
-    }
-  );
+        })
 }
 
 ////////////////////////////////////////
 // Get details on individual devices
 ////////////////////////////////////////
 
-function getDetails() {
+function getDetails(anyDevice) {
 
   //start spinner
   var spinner = new Spinner(opts).spin();
   var target = document.getElementById('spinner');
   $(target).html(spinner.el);
 
-  var requestURL = "https://api.spark.io/v1/devices/" + device0id + "/?access_token=" + token;
+  var requestURL = "https://api.spark.io/v1/devices/" + anyDevice + "/?access_token=" + token;
   $.getJSON(requestURL, function(data) {
       console.log(data);
       console.log('ID: ', data["id"]);
@@ -121,7 +147,7 @@ function getDetails() {
       window.device0fun = data["functions"];
       $.ajax({
         type: 'POST',
-        url: '/checkdevices',
+        url: '/checkdevice',
         data: {
           device0var: window.device0var,
           device0fun: window.device0fun

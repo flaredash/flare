@@ -69,7 +69,7 @@ app.post('/savelength', stormpath.loginRequired, function(req, res) {
 // Save basic details about devices
 ////////////////////////////////////////
 
-// Need to work on getting iteration here so only one chunk of code is needed to do all devices.Currently supports 4.
+// Need to work on iteration here so only one chunk of code is needed to do all devices.Currently supports 4.
 
 // Save device0 id, name and connection status
 app.post('/savedevice0', stormpath.loginRequired, function(req, res) { 
@@ -128,20 +128,16 @@ app.post('/savedevice3', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////////
-// Save variables and functions from devices
+// Save variables and functions from device
 ////////////////////////////////////////////
 
 // Check devices functions and variables
-app.post('/checkdevices', stormpath.loginRequired, function(req, res) { 
+app.post('/checkdevice', stormpath.loginRequired, function(req, res) { 
   req.user.customData.device0var = req.body.device0var;
   req.user.customData.device0fun = req.body.device0fun;
-  // req.user.customData.device1var = req.body.device1var;
-  // req.user.customData.device1fun = req.body.device1fun;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Spark device0 id: ' + req.user.customData.device0id + ' variables and functions saved to SP custom data.');
-      // res.send('Spark device0 variables: ' + req.user.customData.device0var + ' saved to SP custom data.');
-      // res.send('Spark device0 functions: ' + req.user.customData.device0fun + ' saved to SP custom data.');
+      res.send('Device checked for variables and functions');
     } else {
       res.send('Error saving device0 functions and variables.');
     }

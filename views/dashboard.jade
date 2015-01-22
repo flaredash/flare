@@ -31,7 +31,8 @@ block body
           button(onclick='getDevices()') Get Devices?
       .col-md-6
         h4 Device 1: #{user.customData.device0name}
-        button(onclick='getSpark()') Refresh?
+        button(onclick='renameDevice(device0id)') Rename
+        button(onclick='getDetails(device0id)') Get details
         h6 ID: #{user.customData.device0id}
         h6 Version:
         h6 Connected: #{user.customData.device0con}
@@ -39,7 +40,8 @@ block body
         h6 Functions: #{user.customData.device0fun}
       .col-md-6
         h4 Device 2: #{user.customData.device1name}
-        button(onclick='refreshDevice1()') Refresh?
+        button(onclick='renameDevice(device1id)') Rename
+        button(onclick='getDetails(device1id)') Get details
         h6 ID: #{user.customData.device1id}
         h6 Version:
         h6 Connected: #{user.customData.device1con}
@@ -47,7 +49,7 @@ block body
         h6 Functions: #{user.customData.device1fun}
       .col-md-6
         h4 Device 3: #{user.customData.device2name}
-        button(onclick='refreshDevice2()') Refresh?
+        button(onclick='getDetails(device2id)') Get details
         h6 ID: #{user.customData.device2id}
         h6 Version:
         h6 Connected: #{user.customData.device2con}
@@ -55,7 +57,7 @@ block body
         h6 Functions: #{user.customData.device2fun}
       .col-md-6
         h4 Device 4: #{user.customData.device3name}
-        button(onclick='refreshDevice3()') Refresh?
+        button(onclick='getDetails(device3id)') Get details
         h6 ID: #{user.customData.device3id}
         h6 Version:
         h6 Connected: #{user.customData.device3con}
