@@ -13,9 +13,8 @@ function sparkLogin() {
 /////////////////////////////////////////////////////
 
 function getDevices() {
-  // sparkLogin();
   saveDevices();
-  saveLength();
+  //saveLength();
 }
 
 ///////////////////////////////////
@@ -23,6 +22,7 @@ function getDevices() {
 ///////////////////////////////////
 
 function sparkList() {
+  sparkLogin();
   var devicesPr = spark.listDevices();
   devicesPr.then(
     function(devices) {
@@ -102,17 +102,14 @@ function saveDevices() {
 // Need to handle non-network errors like name already in use
 
 function renameDevice(anyDevice) {
-  sparkLogin();
-
         $.ajax({
             type: 'PUT',
             url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
             data: {
-            name: 'testname5'
+            name: 'testname456'
             },
             success: function() {
               console.log('Renamed device: ' + anyDevice);
-              //sparkList();
               saveDevices();
             },
             error: function(err) {
