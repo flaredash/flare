@@ -60,40 +60,86 @@ function saveLength() {
 ////////////////////////////////////////
 
 function saveDevices() {
-  sparkLogin();
-  var devicesPr = spark.listDevices();
-
-  devicesPr.then(
-    function(devices) {
-      console.log('Devices: ', devices);
-      var devNum = devices["length"];
-      // iterate through devices and save details
-      for (i = 0; i < devNum; i++) {
-        var idWindow = 'window.device' + i + 'id';
-        var nameWindow = 'window.device' + i + 'name';
-        var conWindow = 'window.device' + i + 'con';
-        idWindow = devices[i]["id"];
-        nameWindow = devices[i]["name"];
-        conWindow = devices[i]["connected"];
-        console.log('Device' + i + ' name: ' + nameWindow);
-        console.log('Device' + i + ' id: ' + idWindow);
-
-        $.ajax({
-          type: 'POST',
-          url: '/savedevice' + i,
-          data: {
-            deviceid: idWindow,
-            devicename: nameWindow,
-            devicecon: conWindow
-          },
-          success: function() {
-            console.log('Saved device(s)');
+  // Login to Spark first, then
+  spark.login({accessToken: token}).then(
+    function(obj){
+      console.log('API call completed on promise resolve: ', obj);
+      // List devices on Spark cloud, then
+      spark.listDevices().then(
+        function(devices) {
+          console.log('Devices: ', devices);
+          var devNum = devices["length"];
+          // iterate through devices and save details
+          for (i = 0; i < devNum; i++) {
+            var idWindow = 'window.device' + i + 'id';
+            var nameWindow = 'window.device' + i + 'name';
+            var conWindow = 'window.device' + i + 'con';
+            idWindow = devices[i]["id"];
+            nameWindow = devices[i]["name"];
+            conWindow = devices[i]["connected"];
+            console.log('Device' + i + ' name: ' + nameWindow);
+            console.log('Device' + i + ' id: ' + idWindow);
+            $.ajax({
+              type: 'POST',
+              url: '/savedevice' + i,
+              data: {
+                deviceid: idWindow,
+                devicename: nameWindow,
+                devicecon: conWindow
+              },
+              success: function() {
+                console.log('Saved device(s)');
+              }
+            })
           }
-        })
-      }
+        },
+        function(err) {
+          console.log('Listing of devices failed: ', err);
+        }
+      );
+    },
+    function(err) {
+      console.log('API call completed on promise fail: ', err);
     }
   );
-}
+};
+
+
+// function saveDevices() {
+//   sparkLogin();
+//   var devicesPr = spark.listDevices();
+
+//   devicesPr.then(
+//     function(devices) {
+//       console.log('Devices: ', devices);
+//       var devNum = devices["length"];
+//       // iterate through devices and save details
+//       for (i = 0; i < devNum; i++) {
+//         var idWindow = 'window.device' + i + 'id';
+//         var nameWindow = 'window.device' + i + 'name';
+//         var conWindow = 'window.device' + i + 'con';
+//         idWindow = devices[i]["id"];
+//         nameWindow = devices[i]["name"];
+//         conWindow = devices[i]["connected"];
+//         console.log('Device' + i + ' name: ' + nameWindow);
+//         console.log('Device' + i + ' id: ' + idWindow);
+
+        // $.ajax({
+        //   type: 'POST',
+        //   url: '/savedevice' + i,
+        //   data: {
+        //     deviceid: idWindow,
+        //     devicename: nameWindow,
+        //     devicecon: conWindow
+        //   },
+        //   success: function() {
+        //     console.log('Saved device(s)');
+        //   }
+        // })
+//       }
+//     }
+//   );
+// }
 
 ////////////////////////////////////////
 // Rename a device
