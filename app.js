@@ -45,7 +45,7 @@ app.post('/savetoken', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Spark token: ' + req.user.customData.token + ' saved to SP custom data.');
     } else {
-      res.send('Error saving token.');
+      res.status(500).json({ error: 'Failed to save token. Try again.' });
     }
   });
 });
@@ -60,7 +60,7 @@ app.post('/savelength', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Saved length of ' + req.user.customData.length + ' to SP custom data.');
     } else {
-      res.send('Error saving length.');
+      res.status(500).json({ error: 'Failed to save length. Try again.' });
     }
   });
 });
@@ -80,7 +80,7 @@ app.post('/savedevice0', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Spark device0 name: ' + req.user.customData.device0name + ' id, name and connection status saved to SP custom data.');
     } else {
-      res.send('Error saving device0 id, name and connection status.');
+      res.status(500).json({ error: 'Failed to save device0 general data. Try again.' });
     }
   });
 });
@@ -94,7 +94,7 @@ app.post('/savedevice1', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Spark device1 name: ' + req.user.customData.device1name + ' id, name and connection status saved to SP custom data.');
     } else {
-      res.send('Error saving device1 id, name and connection status.');
+      res.status(500).json({ error: 'Failed to save device1 general data. Try again.' });
     }
   });
 });
@@ -108,7 +108,7 @@ app.post('/savedevice2', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Spark device2 id: ' + req.user.customData.device2id + ' id, name and connection status saved to SP custom data.');
     } else {
-      res.send('Error saving device2 id, name and connection status.');
+      res.status(500).json({ error: 'Failed to save device2 general data. Try again.' });
     }
   });
 });
@@ -122,7 +122,7 @@ app.post('/savedevice3', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Spark device3 id: ' + req.user.customData.device3id + ' id, name and connection status saved to SP custom data.');
     } else {
-      res.send('Error saving device3 id, name and connection status.');
+      res.status(500).json({ error: 'Failed to save device3 general data. Try again.' });
     }
   });
 });
@@ -139,7 +139,7 @@ app.post('/checkdevice', stormpath.loginRequired, function(req, res) {
     if (!err) {
       res.send('Device checked for variables and functions');
     } else {
-      res.send('Error saving device0 functions and variables.');
+      res.status(500).json({ error: 'Failed to save device4 general data. Try again.' });
     }
   });
 });
