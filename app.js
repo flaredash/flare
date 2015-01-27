@@ -69,8 +69,6 @@ app.post('/savelength', stormpath.loginRequired, function(req, res) {
 // Save basic details about devices
 ////////////////////////////////////////
 
-// Need to work on iteration here so only one chunk of code is needed to do all devices.Currently supports 4.
-
 // Save device0 id, name and connection status
 app.post('/savedevice0', stormpath.loginRequired, function(req, res) { 
   req.user.customData.device0id = req.body.deviceid;
@@ -123,6 +121,58 @@ app.post('/savedevice3', stormpath.loginRequired, function(req, res) {
       res.send('Spark device3 id: ' + req.user.customData.device3id + ' id, name and connection status saved to SP custom data.');
     } else {
       res.status(500).json({ error: 'Failed to save device3 general data. Try again.' });
+    }
+  });
+});
+
+////////////////////////////////////////
+// Save device version
+////////////////////////////////////////
+
+// Save device0 version
+app.post('/saveversion0', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device0ver = req.body.devicever;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Saved version');
+    } else {
+      res.status(500).json({ error: 'Failed to save device0 version. Try again.' });
+    }
+  });
+});
+
+// Save device1 version
+app.post('/saveversion1', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device1ver = req.body.devicever;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Saved version');
+    } else {
+      res.status(500).json({ error: 'Failed to save device0 version. Try again.' });
+    }
+  });
+});
+
+// Save device2 version
+app.post('/saveversion2', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device2ver = req.body.devicever;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Saved version');
+    } else {
+      res.status(500).json({ error: 'Failed to save device0 version. Try again.' });
+    }
+  });
+});
+
+// Save device3 version
+app.post('/saveversion3', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device3ver = req.body.devicever;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Saved version');
+    } else {
+      res.status(500).json({ error: 'Failed to save device0 version. Try again.' });
     }
   });
 });
