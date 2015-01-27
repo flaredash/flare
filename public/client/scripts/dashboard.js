@@ -59,74 +59,31 @@ function saveLength() {
 // Save general info about all devices
 ////////////////////////////////////////
 
-
-// function saveDevices() {
-//   // Login to Spark first, then
-//   spark.login({accessToken: token}).then(
-//     function(obj, err){
-//       console.log('API call completed on promise resolve: ', obj);
-//       // List devices on Spark cloud, then
-//       spark.listDevices().then(
-//         function(devices, err) {
-//           console.log('Devices: ', devices);
-//           var devNum = devices["length"];
-
-
-//           // iterate through devices and save details
-//           for (i = 0; i < devNum; i++) {
-//             var idWindow = 'window.device' + i + 'id';
-//             var nameWindow = 'window.device' + i + 'name';
-//             var conWindow = 'window.device' + i + 'con';
-//             idWindow = devices[i]["id"];
-//             nameWindow = devices[i]["name"];
-//             conWindow = devices[i]["connected"];
-//             console.log('Device' + i + ' name: ' + nameWindow);
-//             console.log('Device' + i + ' id: ' + idWindow);
-//             $.ajax({
-//               type: 'POST',
-//               url: '/savedevice' + i,
-//               data: {
-//                 deviceid: idWindow,
-//                 devicename: nameWindow,
-//                 devicecon: conWindow
-//               },
-//               success: function() {
-//                 console.log('Saved device' + i + ': ' + nameWindow);
-//               }
-//             })
-//           }
-//         },
-//         function(err) {
-//           console.log('Listing of devices failed: ', err);
-//         }
-//       );
-//     },
-//     function(err) {
-//       console.log('API call completed on promise fail: ', err);
-//     }
-//   );
-// };
-
-i = 0;
+var devCounter = 0;
 
 function saveDevices() {
+  //start spinner
+  var spinner = new Spinner(opts).spin();
+  var target = document.getElementById('spinner');
+  $(target).html(spinner.el);
   sparkLogin();
   var devicesPr = spark.listDevices();
-
   devicesPr.then(
     function(devices) {
-      console.log('Devices: ', devices);
-      var devNum = devices["length"];
-      if (i < devNum) {
-        var idWindow = 'window.device' + i + 'id';
-        var nameWindow = 'window.device' + i + 'name';
-        var conWindow = 'window.device' + i + 'con';
-        idWindow = devices[i]["id"];
-        nameWindow = devices[i]["name"];
-        conWindow = devices[i]["connected"];
-        console.log(i);
+      var devNum = devices.length;
+      var i = 0;
+      var idWindow = 'window.device' + i + 'id';
+      var nameWindow = 'window.device' + i + 'name';
+      var conWindow = 'window.device' + i + 'con';
+      if (devCounter < devNum) {
+        i = devCounter;
+        idWindow = devices[i].id;
+        nameWindow = devices[i].name;
+        conWindow = devices[i].connected;
       } else {
+        console.log('Devices: ', devices);
         console.log('Saving devices done.');
+        $('#spinner').hide().empty();
         return;
       }
 
@@ -142,11 +99,10 @@ function saveDevices() {
           },
           success: function() {
             if (i < devNum) {
-              i++;
-              console.log("Moving to next device, i = " + i);
+              devCounter++;
               saveDevices();
             } else {
-              console.log("All done!");
+              console.log('saveDevices: Device0 failed');
             }
           }
         });
@@ -161,11 +117,10 @@ function saveDevices() {
           },
           success: function() {
             if (i < devNum) {
-              i++;
-              console.log('Moving to next device, i = ' + i);
+              devCounter++;
               saveDevices();
             } else {
-              console.log("All done!");
+              console.log('saveDevices: Device1 failed');
             }
           }
         });
@@ -180,11 +135,10 @@ function saveDevices() {
           },
           success: function() {
             if (i < devNum) {
-              i++;
-              console.log('Moving to next device, i = ' + i);
+              devCounter++;
               saveDevices();
             } else {
-              console.log("All done!");
+              console.log('saveDevices: Device2 failed');
             }
           }
         });
@@ -199,16 +153,15 @@ function saveDevices() {
           },
           success: function() {
             if (i < devNum) {
-              i++;
-              console.log('Moving to next device, i = ' + i);
+              devCounter++;
               saveDevices();
             } else {
-              console.log("All done!");
+              console.log('saveDevices: Device3 failed');
             }
           }
         });
       } else {
-        console.log('All done with Ajax!!');
+        console.log('saveDevices: failed');
       }
     }
   );
@@ -218,75 +171,103 @@ function saveDevices() {
 // Rename a device
 ////////////////////////////////////////
 
-// Need to handle non-network errors like name already in use
-
 function renameDevice(anyDevice) {
-        $.ajax({
-            type: 'PUT',
-            url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
-            data: {
-            name: 'testname456'
-            },
-            success: function() {
-              console.log('Renamed device: ' + anyDevice);
-              saveDevices();
-            },
-            error: function(err) {
-              console.log('Something went wrong: ', err);
-            }
-        })
+  $.ajax({
+    type: 'PUT',
+    url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
+    data: {
+      name: 'testname456'
+    },
+    success: function(data) {
+      if (data.ok === false) {
+        console.log(data);
+        console.log('Renaming device failed: ' + data.errors[0]);
+      } else {
+        console.log('Renamed device: ' + anyDevice);
+        saveDevices();
+      }
+    },
+    error: function(err) {
+      console.log('renameDevice ajax failed: ', err);
+    }
+  });
 }
 
 ////////////////////////////////////////
 // Get details on individual devices
 ////////////////////////////////////////
 
-function getDetails(anyDevice) {
+function getDetails(anyDevice, deviceNumber) {
 
   //start spinner
   var spinner = new Spinner(opts).spin();
   var target = document.getElementById('spinner');
   $(target).html(spinner.el);
 
-  var requestURL = "https://api.spark.io/v1/devices/" + anyDevice + "/?access_token=" + token;
-  $.getJSON(requestURL, function(data) {
-      console.log(data);
-      console.log('ID: ', data["id"]);
-      console.log('Name: ', data["name"]);
-      console.log('Version: ', data["cc3000_patch_version"]);
-      console.log('Connected: ', data["connected"]);
-      console.log('Variables: ', data["variables"]);
-      console.log('Functions: ', data["functions"]);
+  var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token;
+  $.getJSON(requestURL, function(device) {
+      console.log(device);
+      console.log('ID: ' + device.id);
+      console.log('Name: ' + device.name);
+      console.log('Version: ' + device.cc3000_patch_version);
+      console.log('Connected: ' + device.connected);
+      console.log('Variables: ' + device.variables);
+      console.log('Functions: ' + device.functions);
 
-      // Save device0 "variables" and "functions" to Stormpath
-      window.device0var = data["variables"];
-      window.device0fun = data["functions"];
+      // Save version to Stormpath
+      var verWindow = 'window.device' + deviceNumber + 'id';
+      verWindow = device.cc3000_patch_version;
       $.ajax({
         type: 'POST',
-        url: '/checkdevice',
+        url: '/saveversion' + deviceNumber,
         data: {
-          device0var: window.device0var,
-          device0fun: window.device0fun
+          devicever: verWindow
         },
-        success: function() {
-          console.log('Saved device0fun to Stormpath: ' + device0fun);
-          console.log('Saved device0var to Stormpath: ' + device0var);
-          var vari = data["variables"];
-          var func = data["functions"];
-          for (var element in vari) {
-            console.log(element + ": " + vari[element]);
-          }
-          for (var element in func) {
-            console.log(element + ": " + func[element]);
-          }
+        success: function(data) {
+          console.log(data);
+          console.log('Saved device' + deviceNumber + 'version: ' + verWindow + ' to Stormpath.');
+        },
+        error: function(err) {
+          console.log('getDetails: version ajax failed: ', err);
         }
-      })
+      });
+
+      if (device.connected === false) {
+        console.log('Device not currently online.');
+      } else {
+        // Save device0 "variables" and "functions" to Stormpath
+        window.device0var = device.variables;
+        window.device0fun = device.functions;
+        $.ajax({
+          type: 'POST',
+          url: '/checkdevice',
+          data: {
+            device0var: window.device0var,
+            device0fun: window.device0fun
+          },
+          success: function() {
+            console.log('Saved device0fun to Stormpath: ' + device0fun);
+            console.log('Saved device0var to Stormpath: ' + device0var);
+            var vari = device.variables;
+            var func = device.functions;
+            for (var element in vari) {
+              console.log(element + ": " + vari[element]);
+            }
+            for (var element in func) {
+              console.log(element + ": " + func[element]);
+            }
+          }
+        });
+      }
     })
     .done(function() {
-      //stop spinner
-      $('#spinner').hide().empty();
+      // spinner gets stopped after saveDevices()
+      // $('#spinner').hide().empty();
+      saveDevices();
+
     })
     .fail(function() {
-      console.log("getSpark request failed");
+      console.log("getDetails request failed");
+      $('#spinner').hide().empty();
     });
 }
