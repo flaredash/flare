@@ -35,8 +35,17 @@ block body
           button(onclick='getDevices()') Get Devices?
       .col-md-6
         h4 Device 1: #{user.customData.device0name}
-        button(onclick='renameDevice(device0id)') Rename
+        button(onclick='renameDevice(device0id, 0)') Rename
         button(onclick='getDetails(device0id, 0)') Get details
+
+        div
+          form(action='/dashboard',method='post')
+            div(data-role='fieldcontain')
+              fieldset(data-role='controlgroup')
+                label(for='renameto') Rename:
+                   input(id='0renameto',type='text',value='',placeholder='Rename device to',name='renameto')
+            div(data-role='fieldcontain')
+
         h6 ID: #{user.customData.device0id}
         h6 Version: #{user.customData.device0ver}
         h6 Connected: #{user.customData.device0con}

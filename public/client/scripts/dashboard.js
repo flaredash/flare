@@ -171,12 +171,13 @@ function saveDevices() {
 // Rename a device
 ////////////////////////////////////////
 
-function renameDevice(anyDevice) {
+function renameDevice(anyDevice, deviceNumber) {
+  var renameTo = document.getElementById(deviceNumber + 'renameto');
   $.ajax({
     type: 'PUT',
     url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
     data: {
-      name: 'testname456'
+      name: renameTo.value
     },
     success: function(data) {
       if (data.ok === false) {
