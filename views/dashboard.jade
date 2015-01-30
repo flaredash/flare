@@ -28,57 +28,107 @@ block body
     var device3con = ("#{user.customData.device3con}")
     var device3var = ("#{user.customData.device3var}")
     var device3fun = ("#{user.customData.device3fun}")
-  .settings
-    .row
-      .col-md-12
-        .jumbotron
-          button(onclick='getDevices()') Get Devices?
-      .col-md-6
-        h4 Device 1: #{user.customData.device0name}
-        button(onclick='renameDevice(device0id, 0)') Rename
-        button(onclick='getDetails(device0id, 0)') Get details
-
-        div
-          form(action='/dashboard',method='post')
-            div(data-role='fieldcontain')
-              fieldset(data-role='controlgroup')
-                label(for='renameto') Rename:
-                   input(id='0renameto',type='text',value='',placeholder='Rename device to',name='renameto')
-            div(data-role='fieldcontain')
-
-        h6 ID: #{user.customData.device0id}
-        h6 Version: #{user.customData.device0ver}
-        h6 Connected: #{user.customData.device0con}
-        h6 Variables: #{user.customData.device0var}
-        h6 Functions: #{user.customData.device0fun}
-      .col-md-6
-        h4 Device 2: #{user.customData.device1name}
-        button(onclick='renameDevice(device1id)') Rename
-        button(onclick='getDetails(device1id, 1)') Get details
-        h6 ID: #{user.customData.device1id}
-        h6 Version: #{user.customData.device1ver}
-        h6 Connected: #{user.customData.device1con}
-        h6 Variables: #{user.customData.device1var}
-        h6 Functions: #{user.customData.device1fun}
-      .col-md-6
-        h4 Device 3: #{user.customData.device2name}
-        button(onclick='renameDevice(device1id)') Rename
-        button(onclick='getDetails(device2id, 2)') Get details
-        h6 ID: #{user.customData.device2id}
-        h6 Version: #{user.customData.device2ver}
-        h6 Connected: #{user.customData.device2con}
-        h6 Variables: #{user.customData.device2var}
-        h6 Functions: #{user.customData.device2fun}
-      .col-md-6
-        h4 Device 4: #{user.customData.device3name}
-        button(onclick='renameDevice(device1id)') Rename
-        button(onclick='getDetails(device3id, 3)') Get details
-        h6 ID: #{user.customData.device3id}
-        h6 Version: #{user.customData.device3ver}
-        h6 Connected: #{user.customData.device3con}
-        h6 Variables: #{user.customData.device3var}
-        h6 Functions: #{user.customData.device3fun}
+  .container
+      .row.clearfix
+        .col-md-12.column
+          .alert.alert-dismissable.alert-danger
+            button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+            h4
+              | Hallo!
+            strong What's up!
+            |  This is just a test message, nothing is really wrong ^_^ 
+            a.alert-link(href='#') linky
+            button(onclick='getDevices()') Get Devices?
+          .row.clearfix
+            .col-md-1.column
+            .col-md-5.column
+              .panel.panel-info
+                .panel-heading
+                  h3.panel-title
+                    h4 #{user.customData.device0name}
+                .panel-body
+                  button(onclick='renameDevice(device0id, 0)') Rename
+                  button(onclick='getDetails(device0id, 0)') Get details
+                  div
+                    form(action='/dashboard',method='post')
+                      div(data-role='fieldcontain')
+                        fieldset(data-role='controlgroup')
+                          label(for='renameto') Rename:
+                             input(id='0renameto',type='text',value='',placeholder='Rename device to',name='renameto')
+                      div(data-role='fieldcontain')
+                  h6 Version: #{user.customData.device0ver}
+                  h6 Connected: #{user.customData.device0con}
+                  h6 Variables: #{user.customData.device0var}
+                  h6 Functions: #{user.customData.device0fun}
+                .panel-footer
+                  h6 ID: #{user.customData.device0id}
+            .col-md-5.column
+              .panel.panel-success
+                .panel-heading
+                  h3.panel-title
+                    h4 #{user.customData.device1name}
+                .panel-body
+                  button(onclick='renameDevice(device1id, 1)') Rename
+                  button(onclick='getDetails(device1id, 1)') Get details
+                  div
+                    form(action='/dashboard',method='post')
+                      div(data-role='fieldcontain')
+                        fieldset(data-role='controlgroup')
+                          label(for='renameto') Rename:
+                             input(id='1renameto',type='text',value='',placeholder='Rename device to',name='renameto')
+                      div(data-role='fieldcontain')
+                  h6 Version: #{user.customData.device1ver}
+                  h6 Connected: #{user.customData.device1con}
+                  h6 Variables: #{user.customData.device1var}
+                  h6 Functions: #{user.customData.device1fun}
+                .panel-footer
+                  h6 ID: #{user.customData.device1id}
+            .col-md-1.column
+          .row.clearfix
+            .col-md-1.column
+            .col-md-5.column
+              .panel.panel-danger
+                .panel-heading
+                  h3.panel-title
+                    h4 Device 2: #{user.customData.device2name}
+                .panel-body
+                  button(onclick='renameDevice(device2id, 2)') Rename
+                  button(onclick='getDetails(device2id, 2)') Get details
+                  div
+                    form(action='/dashboard',method='post')
+                      div(data-role='fieldcontain')
+                        fieldset(data-role='controlgroup')
+                          label(for='renameto') Rename:
+                             input(id='2renameto',type='text',value='',placeholder='Rename device to',name='renameto')
+                      div(data-role='fieldcontain')
+                  h6 Version: #{user.customData.device2ver}
+                  h6 Connected: #{user.customData.device2con}
+                  h6 Variables: #{user.customData.device2var}
+                  h6 Functions: #{user.customData.device2fun}
+                .panel-footer
+                  h6 ID: #{user.customData.device2id}
+            .col-md-5.column
+              .panel.panel-warning
+                .panel-heading
+                  h3.panel-title
+                    h4 Device 3: #{user.customData.device3name}
+                .panel-body
+                  button(onclick='renameDevice(device3id, 3)') Rename
+                  button(onclick='getDetails(device3id, 3)') Get details
+                  div
+                    form(action='/dashboard',method='post')
+                      div(data-role='fieldcontain')
+                        fieldset(data-role='controlgroup')
+                          label(for='renameto') Rename:
+                             input(id='3renameto',type='text',value='',placeholder='Rename device to',name='renameto')
+                      div(data-role='fieldcontain')
+                  h6 Version: #{user.customData.device3ver}
+                  h6 Connected: #{user.customData.device3con}
+                  h6 Variables: #{user.customData.device3var}
+                  h6 Functions: #{user.customData.device3fun}
+                .panel-footer
+                  h6 ID: #{user.customData.device3id}
+            .col-md-1.column
     #footer
-      .jumbotron
       h6 This is an open source project. Fork it on github <a href="https://github.com/flaredash/flare">here</a>.
       #spinner
