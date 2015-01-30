@@ -7,9 +7,9 @@ html(lang='en')
     meta(name='description', content='Flare, a Spark Dashboard')
     meta(name='keywords', content='spark, flare')
     title= 'Flare | ' + title
-    link(href='client/styles/main.css', rel='stylesheet')
     link(href='//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800', rel='stylesheet', type='text/css')
-    link(href='//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css', rel='stylesheet')
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+    link(href='client/styles/main.css', rel='stylesheet')
     style.
     <!--[if lt IE 9 ]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -17,29 +17,33 @@ html(lang='en')
     <![endif]-->
   body
     .container
-      .header
-        ul.nav.nav-pills.pull-right
-          li
-            a(href='/') Home
-          if user
-            li
-              a(href='/dashboard') Dashboard
-            li
-              a(href='/events') Events
-            li
-              a(href='/settings') Settings
-            li
-              a(href='/logout') Logout
-          else
-            li
-              a(href='/login') Login
-        h3.text-muted Flare
+      nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='#') Flare
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                if user
+                  li
+                    a(href='/dashboard') Dashboard
+                  li
+                    a(href='/events') Events
+                  li
+                    a(href='/settings') Settings
+                  li
+                    a(href='/logout') Logout
+                else
+                  li
+                    a(href='/login') Login
       block body
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    script(src='/js/bootstrap.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(type='text/javascript', src='../client/scripts/events.js')
     script(type='text/javascript', src='//cdn.jsdelivr.net/sparkjs/0.2.0/spark.min.js')
     script(type='text/javascript', src='../client/scripts/settings.js')   
     script(type='text/javascript', src='../client/scripts/dashboard.js')
     script(type='text/javascript', src='../client/scripts/spin.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
