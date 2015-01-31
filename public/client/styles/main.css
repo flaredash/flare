@@ -10,6 +10,13 @@ ul.nav.navbar-nav.navbar-right {
   padding-right: 15px; /* Makes right nav padded from right edge */
 }
 
+/* active menu items */
+ul#dashboard li.dashboard { background-color: red; }
+ul#events li.events { background-color: red; }
+ul#settings li.settings { background-color: red; }
+ul#logout li.logout { background-color: red; }
+ul#login li.login { background-color: red; }
+
 /*set spinner container*/
 
 /*#spinner {
