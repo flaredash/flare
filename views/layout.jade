@@ -26,18 +26,18 @@ html(lang='en')
                 span.icon-bar
               a.navbar-brand(href='#') Flare
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav.navbar-right
+              ul.nav.navbar-nav.navbar-right(id='#{activenav}')
                 if user
-                  li
+                  li.dashboard
                     a(href='/dashboard') Dashboard
-                  li
+                  li.events
                     a(href='/events') Events
-                  li
+                  li.settings
                     a(href='/settings') Settings
-                  li
+                  li.logout
                     a(href='/logout') Logout
                 else
-                  li
+                  li.login
                     a(href='/login') Login
       block body
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
