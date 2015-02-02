@@ -12,13 +12,16 @@ ul.nav.navbar-nav.navbar-right {
 
 /* pads rename field */
 .input-group { padding-top: 5px; }
-/* increase device name in header */
-.panel-title { font-size: 1.5em; }
+/* increase device name, push title left and pad pencil*/
+.panel-title { font-size: 1.5em; padding-right: 2px;}
 /* pads bottom of footer */
 div.panel-footer { padding-bottom: 40px; }
 /* in footer, id to left, version to right */
 div.footer-id { float: left; }
 div.footer-ver { float: right; }
+/* pushes pencil down */
+div.glyphicon-glyphicon.edit { padding-top: 8px; }
+button.rename { float: right; }
 
 /* active menu items */
 ul#dashboard li.dashboard { background-color: red; }

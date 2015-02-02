@@ -171,6 +171,17 @@ function saveDevices() {
 // Rename a device
 ////////////////////////////////////////
 
+function pencil(deviceNumber) {
+  var showHide = document.querySelector(".input-group.rename" + deviceNumber);
+  console.log(showHide);
+  if (showHide.style.display == "none") {
+    showHide.style.display = "";
+  } else {
+    showHide.style.display = "none";
+  }
+
+}
+
 function renameDevice(anyDevice, deviceNumber) {
   var renameTo = document.getElementById(deviceNumber + 'renameto');
   $.ajax({
