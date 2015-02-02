@@ -84,6 +84,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
+        window.location.reload();
         return;
       }
 
