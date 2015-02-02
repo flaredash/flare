@@ -32,24 +32,30 @@ block body
   .container
       .row.clearfix
         .col-md-12.column
-          .alert.alert-dismissable.alert-danger
-            button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
-            h4
-              | Hallo!
-            strong What's up!
-            |  This is just a test message, nothing is really wrong ^_^ 
-            a.alert-link(href='#') linky
-            button(onclick='getDevices()') Get Devices?
+          .row.clearfix
+            .col-md-3.column
+            .col-md-6.column
+              .alert.alert-dismissable.alert-danger
+                button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                h4
+                  | Hallo!
+                strong What's up!
+                |  This is just a test message, nothing is really wrong ^_^ 
+                a.alert-link(href='#') linky
+                button(onclick='getDevices()') Get Devices?
+            .col-md-3.column
           .row.clearfix
             .col-md-1.column
             .col-md-5.column
               .panel.panel-info
                 .panel-heading
-                  h3.panel-title #{user.customData.device0name}
-                    .input-group.rename
-                      span.input-group-btn
-                        button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
-                      input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
+                  button.rename(onclick='pencil(0)')
+                    .glyphicon.glyphicon-edit(aria-hidden='true')
+                  .panel-title #{user.customData.device0name}
+                  .input-group.rename0
+                    span.input-group-btn
+                      button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
+                    input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
                   button(onclick='getDetails(device0id, 0)') Get details
                   h6 Connected: #{user.customData.device0con}
@@ -63,8 +69,10 @@ block body
             .col-md-5.column
               .panel.panel-success
                 .panel-heading
-                  h3.panel-title #{user.customData.device1name}
-                    .input-group.rename
+                  button.rename(onclick='pencil(1)')
+                    .glyphicon.glyphicon-edit(aria-hidden='true')
+                  .panel-title #{user.customData.device1name}
+                    .input-group.rename1
                       span.input-group-btn
                         button.btn.btn-default(type='button', onclick='renameDevice(device1id, 1)') Rename
                       input.form-control(action='/dashboard', method='post', id='1renameto', type='text', placeholder='Rename device to', name='renameto')
@@ -84,8 +92,10 @@ block body
             .col-md-5.column
               .panel.panel-danger
                 .panel-heading
-                  h3.panel-title #{user.customData.device2name}
-                    .input-group.rename
+                  button.rename(onclick='pencil(2)')
+                    .glyphicon.glyphicon-edit(aria-hidden='true')
+                  .panel-title #{user.customData.device2name}
+                    .input-group.rename2
                       span.input-group-btn
                         button.btn.btn-default(type='button', onclick='renameDevice(device2id, 2)') Rename
                       input.form-control(action='/dashboard', method='post', id='2renameto', type='text', placeholder='Rename device to', name='renameto')
@@ -102,8 +112,10 @@ block body
             .col-md-5.column
               .panel.panel-warning
                 .panel-heading
-                  h3.panel-title #{user.customData.device3name}
-                    .input-group.rename
+                  button.rename(onclick='pencil(3)')
+                    .glyphicon.glyphicon-edit(aria-hidden='true')
+                  .panel-title #{user.customData.device3name}
+                    .input-group.rename3
                       span.input-group-btn
                         button.btn.btn-default(type='button', onclick='renameDevice(device3id, 3)') Rename
                       input.form-control(action='/dashboard', method='post', id='3renameto', type='text', placeholder='Rename device to', name='renameto')
