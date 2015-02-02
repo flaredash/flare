@@ -10,6 +10,16 @@ ul.nav.navbar-nav.navbar-right {
   padding-right: 15px; /* Makes right nav padded from right edge */
 }
 
+/* pads rename field */
+.input-group { padding-top: 5px; }
+/* increase device name in header */
+.panel-title { font-size: 1.5em; }
+/* pads bottom of footer */
+div.panel-footer { padding-bottom: 40px; }
+/* in footer, id to left, version to right */
+div.footer-id { float: left; }
+div.footer-ver { float: right; }
+
 /* active menu items */
 ul#dashboard li.dashboard { background-color: red; }
 ul#events li.events { background-color: red; }
