@@ -19,9 +19,13 @@ div.panel-footer { padding-bottom: 40px; }
 /* in footer, id to left, version to right */
 div.footer-id { float: left; }
 div.footer-ver { float: right; }
-/* pushes pencil down */
-div.glyphicon-glyphicon.edit { padding-top: 8px; }
-button.rename { float: right; }
+/* pushes pencil right & down */
+button.rename { float: right; margin-top: 2px; }
+/* pushes refresh right & down*/
+button.refresh { float: right; margin-top: 2px; }
+/* pushes button glyphs down a bit*/
+.glyphicon { top: 2px; }
+
 /* dont show rename field by default*/
 .input-group.rename0 { display: none; }
 .input-group.rename1 { display: none; }

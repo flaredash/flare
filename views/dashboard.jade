@@ -49,7 +49,9 @@ block body
             .col-md-5.column
               .panel.panel-info
                 .panel-heading
-                  button.rename(onclick='pencil(0)')
+                  button.rename(onclick='getDetails(device0id, 0)')
+                    .glyphicon.glyphicon-refresh(aria-hidden='true')
+                  button.refresh(onclick='pencil(0)')
                     .glyphicon.glyphicon-edit(aria-hidden='true')
                   .panel-title #{user.customData.device0name}
                   .input-group.rename0
@@ -57,7 +59,6 @@ block body
                       button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
                     input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  button(onclick='getDetails(device0id, 0)') Get details
                   h6 Connected: #{user.customData.device0con}
                   h6 Variables: #{user.customData.device0var}
                   h6 Functions: #{user.customData.device0fun}
@@ -69,6 +70,8 @@ block body
             .col-md-5.column
               .panel.panel-success
                 .panel-heading
+                  button.rename(onclick='getDetails(device1id, 1)')
+                    .glyphicon.glyphicon-refresh(aria-hidden='true')
                   button.rename(onclick='pencil(1)')
                     .glyphicon.glyphicon-edit(aria-hidden='true')
                   .panel-title #{user.customData.device1name}
@@ -77,7 +80,6 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device1id, 1)') Rename
                       input.form-control(action='/dashboard', method='post', id='1renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  button(onclick='getDetails(device1id, 1)') Get details
                   h6 Connected: #{user.customData.device1con}
                   h6 Variables: #{user.customData.device1var}
                   h6 Functions: #{user.customData.device1fun}
@@ -92,6 +94,8 @@ block body
             .col-md-5.column
               .panel.panel-danger
                 .panel-heading
+                  button.rename(onclick='getDetails(device2id, 2)')
+                    .glyphicon.glyphicon-refresh(aria-hidden='true')
                   button.rename(onclick='pencil(2)')
                     .glyphicon.glyphicon-edit(aria-hidden='true')
                   .panel-title #{user.customData.device2name}
@@ -100,7 +104,6 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device2id, 2)') Rename
                       input.form-control(action='/dashboard', method='post', id='2renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  button(onclick='getDetails(device2id, 2)') Get details
                   h6 Connected: #{user.customData.device2con}
                   h6 Variables: #{user.customData.device2var}
                   h6 Functions: #{user.customData.device2fun}
@@ -112,6 +115,8 @@ block body
             .col-md-5.column
               .panel.panel-warning
                 .panel-heading
+                  button.rename(onclick='getDetails(device3id, 3)')
+                    .glyphicon.glyphicon-refresh(aria-hidden='true')
                   button.rename(onclick='pencil(3)')
                     .glyphicon.glyphicon-edit(aria-hidden='true')
                   .panel-title #{user.customData.device3name}
@@ -120,7 +125,6 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device3id, 3)') Rename
                       input.form-control(action='/dashboard', method='post', id='3renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  button(onclick='getDetails(device3id, 3)') Get details
                   h6 Connected: #{user.customData.device3con}
                   h6 Variables: #{user.customData.device3var}
                   h6 Functions: #{user.customData.device3fun}
