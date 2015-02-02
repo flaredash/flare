@@ -173,17 +173,16 @@ function saveDevices() {
 
 function pencil(deviceNumber) {
   var showHide = document.querySelector(".input-group.rename" + deviceNumber);
-  console.log(showHide);
-  if (showHide.style.display == "none") {
-    showHide.style.display = "";
+  if (showHide.style.display == "" || showHide.style.display == "none") {
+    showHide.style.display = "table";
   } else {
     showHide.style.display = "none";
   }
-
 }
 
 function renameDevice(anyDevice, deviceNumber) {
   var renameTo = document.getElementById(deviceNumber + 'renameto');
+  var showHide = document.querySelector(".input-group.rename" + deviceNumber);
   $.ajax({
     type: 'PUT',
     url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
@@ -196,6 +195,7 @@ function renameDevice(anyDevice, deviceNumber) {
         console.log('Renaming device failed: ' + data.errors[0]);
       } else {
         console.log('Renamed device: ' + anyDevice);
+        showHide.style.display = "none";
         saveDevices();
       }
     },

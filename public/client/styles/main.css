@@ -22,6 +22,11 @@ div.footer-ver { float: right; }
 /* pushes pencil down */
 div.glyphicon-glyphicon.edit { padding-top: 8px; }
 button.rename { float: right; }
+/* dont show rename field by default*/
+.input-group.rename0 { display: none; }
+.input-group.rename1 { display: none; }
+.input-group.rename2 { display: none; }
+.input-group.rename3 { display: none; }
 
 /* active menu items */
 ul#dashboard li.dashboard { background-color: red; }
