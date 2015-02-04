@@ -32,6 +32,15 @@ button.refresh { float: right; margin-top: 2px; }
 .input-group.rename2 { display: none; }
 .input-group.rename3 { display: none; }
 
+/* dont show device panel by default*/
+.device0.panel { display: none; }
+.device1.panel { display: none; }
+.device2.panel { display: none; }
+.device3.panel { display: none; }
+
+/* dont show dash warning by default*/
+.alert.alert-dismissable.alert-danger { display: none; }
+
 /* active menu items */
 ul#dashboard li.dashboard { background-color: red; }
 ul#events li.events { background-color: red; }
