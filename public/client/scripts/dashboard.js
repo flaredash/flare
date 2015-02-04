@@ -14,7 +14,7 @@ function sparkLogin() {
 
 function getDevices() {
   saveDevices();
-  //saveLength();
+  saveLength();
 }
 
 ///////////////////////////////////
@@ -53,6 +53,66 @@ function saveLength() {
         })
     }
   );
+}
+
+////////////////////////////////////////
+// Draw panels on dash load
+////////////////////////////////////////
+
+$(window).load(function() {
+  var showPanel0 = document.querySelector('.device0.panel');
+  var showPanel1 = document.querySelector('.device1.panel');
+  var showPanel2 = document.querySelector('.device2.panel');
+  var showPanel3 = document.querySelector('.device3.panel');
+      if (length == 1) {
+        showPanel0.style.display = 'block';
+        drawD0Con();
+      } else if (length == 2) {
+        showPanel0.style.display = 'block';
+        showPanel1.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+      } else if (length == 3) {
+        showPanel1.style.display = 'block';
+        showPanel2.style.display = 'block';
+        showPanel3.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+        drawD2Con();
+      } else if (length == 4) {
+        showPanel1.style.display = 'block';
+        showPanel2.style.display = 'block';
+        showPanel3.style.display = 'block';
+        showPanel4.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+        drawD2Con();
+        drawD3Con();
+      }
+});
+
+function drawD0Con() {
+  if (device0con === 'true') {
+    $("div.device0.panel").removeClass("panel-warning").addClass("panel-success");
+  }
+}
+
+function drawD1Con() {
+  if (device1con === 'true') {
+    $("div.device1.panel").removeClass("panel-warning").addClass("panel-success");
+  }
+}
+
+function drawD2Con() {
+  if (device2con === 'true') {
+    $("div.device2.panel").removeClass("panel-warning").addClass("panel-success");
+  }
+}
+
+function drawD3Con() {
+  if (device3con === 'true') {
+    $("div.device3.panel").removeClass("panel-warning").addClass("panel-success");
+  }
 }
 
 ////////////////////////////////////////
@@ -173,17 +233,17 @@ function saveDevices() {
 ////////////////////////////////////////
 
 function pencil(deviceNumber) {
-  var showHide = document.querySelector(".input-group.rename" + deviceNumber);
-  if (showHide.style.display == "" || showHide.style.display == "none") {
-    showHide.style.display = "table";
+  var showHide = document.querySelector('.input-group.rename' + deviceNumber);
+  if (showHide.style.display == '' || showHide.style.display == 'none') {
+    showHide.style.display = 'table';
   } else {
-    showHide.style.display = "none";
+    showHide.style.display = 'none';
   }
 }
 
 function renameDevice(anyDevice, deviceNumber) {
   var renameTo = document.getElementById(deviceNumber + 'renameto');
-  var showHide = document.querySelector(".input-group.rename" + deviceNumber);
+  var showHide = document.querySelector('.input-group.rename' + deviceNumber);
   $.ajax({
     type: 'PUT',
     url: 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token,
