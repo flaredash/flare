@@ -2,7 +2,6 @@ extends layout
 
 block body
   script.
-    var activenav = ("dashboard")
     var token = ("#{user.customData.token}")
     var length = ("#{user.customData.length}")
     var device0id = ("#{user.customData.device0id}")
@@ -32,6 +31,7 @@ block body
   .container
       .row.clearfix
         .col-md-12.column
+          button(onclick='getDevices()') Get Devices?
           .row.clearfix
             .col-md-3.column
             .col-md-6.column
@@ -42,12 +42,11 @@ block body
                 strong What's up!
                 |  This is just a test message, nothing is really wrong ^_^ 
                 a.alert-link(href='#') linky
-                button(onclick='getDevices()') Get Devices?
             .col-md-3.column
           .row.clearfix
             .col-md-1.column
             .col-md-5.column
-              .panel.panel-info
+              .device0.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device0id, 0)')
                     .glyphicon.glyphicon-refresh(aria-hidden='true')
@@ -68,7 +67,7 @@ block body
                   .footer-ver
                     h6 v #{user.customData.device0ver}
             .col-md-5.column
-              .panel.panel-success
+              .device1.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device1id, 1)')
                     .glyphicon.glyphicon-refresh(aria-hidden='true')
@@ -92,7 +91,7 @@ block body
           .row.clearfix
             .col-md-1.column
             .col-md-5.column
-              .panel.panel-danger
+              .device2.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device2id, 2)')
                     .glyphicon.glyphicon-refresh(aria-hidden='true')
@@ -113,7 +112,7 @@ block body
                   .footer-ver
                     h6 v #{user.customData.device2ver}
             .col-md-5.column
-              .panel.panel-warning
+              .device3.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device3id, 3)')
                     .glyphicon.glyphicon-refresh(aria-hidden='true')
