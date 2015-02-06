@@ -144,7 +144,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        window.location.reload();
+        // window.location.reload();
         return;
       }
 
@@ -305,7 +305,7 @@ function getDetails(anyDevice, deviceNumber) {
         }
       });
 
-      if (device.connected === false) {
+      if (device.connected === 'false') {
         console.log('Device not currently online.');
       } else {
         // Save device0 "variables" and "functions" to Stormpath
@@ -321,13 +321,14 @@ function getDetails(anyDevice, deviceNumber) {
           success: function() {
             console.log('Saved device0fun to Stormpath: ' + device0fun);
             console.log('Saved device0var to Stormpath: ' + device0var);
+
             var vari = device.variables;
             var func = device.functions;
             for (var element in vari) {
-              console.log(element + ": " + vari[element]);
+              console.log(element + ": " + vari.element);
             }
             for (var element in func) {
-              console.log(element + ": " + func[element]);
+              console.log(element + ": " + func.element);
             }
           }
         });
@@ -344,3 +345,9 @@ function getDetails(anyDevice, deviceNumber) {
       $('#spinner').hide().empty();
     });
 }
+
+////////////////////////////////////////
+// Get a variable
+////////////////////////////////////////
+
+// GET /v1/devices/{DEVICE_ID}/{VARIABLE}
