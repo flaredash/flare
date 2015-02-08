@@ -4,11 +4,20 @@ block body
   script.
     var token = ("#{user.customData.token}")
   .settings
-    .row
-      .col-lg-12
-        .jumbotron
-          h5 If you already have a token listed below, you should have access to all of your cores and the ability to add new ones in the dashboard. However, if you want to login to Spark to refresh your authentication token, you can.
-          button(onclick='saveToken()') Refresh token!
-          h6 Current token is: #{user.customData.token}
-    #footer
+    .row.clearfix
+      .col-md-2.column
+      .col-md-8.column
+        .settings.panel.panel-info
+          .panel-heading
+            button.remove-circle(onclick='delToken()', title='Remove token')
+              .glyphicon.glyphicon-remove-circle(aria-hidden='true')
+            button.wrench(onclick='saveToken()', title='Refresh token')
+              .glyphicon.glyphicon-wrench(aria-hidden='true')
+            .panel-title Settings 
+          .panel-body
+            | If you already have a token listed below, you should have access to all of your cores and the ability to add new ones in the dashboard. However, if you want to login to Spark to refresh your authentication token, you can.
+            h6 Current token is: #{user.customData.token}
+            #spark-login
+      .col-md-2.column
+    .footer
       h6 This is an open source project. Fork it on github <a href="https://github.com/flaredash/flare">here</a>.

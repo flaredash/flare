@@ -1,6 +1,6 @@
-/*@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 body {
   margin-top: 70px; /* Positions content (alert box) below static top nav */
@@ -12,7 +12,7 @@ ul.nav.navbar-nav.navbar-right {
 
 /* pads rename field */
 .input-group { padding-top: 5px; }
-/* increase device name, push title left and pad pencil*/
+/* increase device name, push title left*/
 .panel-title { font-size: 1.5em; padding-right: 2px;}
 /* pads bottom of footer */
 div.panel-footer { padding-bottom: 40px; }
@@ -23,6 +23,10 @@ div.footer-ver { float: right; }
 button.rename { float: right; margin-top: 2px; }
 /* pushes refresh right & down*/
 button.refresh { float: right; margin-top: 2px; }
+/* pushes add token right & down*/
+button.wrench { float: right; margin-top: 2px; }
+/* pushes remove token right & down*/
+button.remove-circle { float: right; margin-top: 2px; }
 /* pushes button glyphs down a bit*/
 .glyphicon { top: 2px; }
 
@@ -48,6 +52,39 @@ ul#settings li.settings { background-color: red; }
 ul#logout li.logout { background-color: red; }
 ul#login li.login { background-color: red; }
 
+/* footer */
+
+.footer {
+  text-align: center;
+}
+
+/* Spark login */
+
+#spark-login-form-button {
+  background: #4380B3 !important;
+}
+
+#spark-login-form {
+  background: white;
+}
+.spark-login-modal {
+  position:absolute;
+  top: 25%;
+  bottom: 25%;
+}
+
+.spark-login-button {
+  background: rgba(11, 113, 199, 0.71) !important;
+  border-radius: 5px !important;
+}
+
+.spark-login-input {
+  border: 1px solid #D1D4DF !important;
+}
+
+/*.spark-login-error {
+}*/
+
 /*set spinner container*/
 
 /*#spinner {
@@ -61,7 +98,3 @@ ul#login li.login { background-color: red; }
   -webkit-filter: blur(2px) opacity(0.8);
   background-color: 333333;
 }*/
-
-
-
-

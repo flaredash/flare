@@ -2,7 +2,7 @@
 // Login to the Spark Cloud
 ////////////////////////////
 
-function sparkLogin() {  
+function sparkLog() {  
   spark.login({
     accessToken: token
   });
@@ -22,7 +22,7 @@ function getDevices() {
 ///////////////////////////////////
 
 function sparkList() {
-  sparkLogin();
+  sparkLog();
   var devicesPr = spark.listDevices();
   devicesPr.then(
     function(devices) {
@@ -126,7 +126,7 @@ function saveDevices() {
   var spinner = new Spinner(opts).spin();
   var target = document.getElementById('spinner');
   $(target).html(spinner.el);
-  sparkLogin();
+  sparkLog();
   var devicesPr = spark.listDevices();
   devicesPr.then(
     function(devices) {
@@ -144,7 +144,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        // window.location.reload();
+        window.location.reload();
         return;
       }
 
