@@ -4,6 +4,7 @@
 
 body {
   margin-top: 70px; /* Positions content (alert box) below static top nav */
+  background-color: rgb(100, 95, 105);
 }
 
 ul.nav.navbar-nav.navbar-right {
@@ -17,8 +18,10 @@ ul.nav.navbar-nav.navbar-right {
 /* pads bottom of footer */
 div.panel-footer { padding-bottom: 40px; }
 /* in footer, id to left, version to right */
-div.footer-id { float: left; }
+div.footer-id { float: left;}
+div.footer-id h6 { font-size: 10px;}
 div.footer-ver { float: right; }
+div.footer-ver h6 { font-size: 10px;}
 /* pushes pencil right & down */
 button.rename { float: right; margin-top: 2px; }
 /* pushes refresh right & down*/
@@ -33,14 +36,14 @@ button.remove-circle { float: right; margin-top: 2px; }
 .powOn { 
 	float: right;
 	padding-left: 12px;
-	padding-top: 4px;
+	padding-top: 3px;
 	color: #78D750;
 	font-size: 20px;
 }
 .powOff { 
 	float: right;
 	padding-left: 12px;
-	padding-top: 4px;
+	padding-top: 3px;
 	color: #CF4B5F;
 	font-size: 20px;
 }
@@ -71,6 +74,16 @@ ul#login li.login { background-color: red; }
 
 .footer {
   text-align: center;
+  color: white;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 /* Spark login */
