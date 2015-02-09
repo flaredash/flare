@@ -58,12 +58,13 @@ block body
                       button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
                     input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Connected: #{user.customData.device0con}
                   h6 Variables: #{user.customData.device0var}
                   h6 Functions: #{user.customData.device0fun}
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device0id}
+                  .div.device0pow.powOff
+                    .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device0ver}
             .col-md-5.column
@@ -79,12 +80,13 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device1id, 1)') Rename
                       input.form-control(action='/dashboard', method='post', id='1renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Connected: #{user.customData.device1con}
                   h6 Variables: #{user.customData.device1var}
                   h6 Functions: #{user.customData.device1fun}
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device1id}
+                  .div.device1pow.powOff
+                    .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device1ver}
             .col-md-1.column
@@ -103,12 +105,13 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device2id, 2)') Rename
                       input.form-control(action='/dashboard', method='post', id='2renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Connected: #{user.customData.device2con}
                   h6 Variables: #{user.customData.device2var}
                   h6 Functions: #{user.customData.device2fun}
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device2id}
+                  .div.device2pow.powOff
+                    .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device2ver}
             .col-md-5.column
@@ -124,12 +127,13 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device3id, 3)') Rename
                       input.form-control(action='/dashboard', method='post', id='3renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Connected: #{user.customData.device3con}
                   h6 Variables: #{user.customData.device3var}
                   h6 Functions: #{user.customData.device3fun}
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device3id}
+                  .div.device3pow.powOff
+                    .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device3ver}
             .col-md-1.column

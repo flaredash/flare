@@ -94,24 +94,28 @@ $(window).load(function() {
 function drawD0Con() {
   if (device0con === 'true') {
     $("div.device0.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device0pow").removeClass("powOff").addClass("powOn");
   }
 }
 
 function drawD1Con() {
   if (device1con === 'true') {
     $("div.device1.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device1pow").removeClass("powOff").addClass("powOn");
   }
 }
 
 function drawD2Con() {
   if (device2con === 'true') {
     $("div.device2.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device2pow").removeClass("powOff").addClass("powOn");
   }
 }
 
 function drawD3Con() {
   if (device3con === 'true') {
     $("div.device3.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device3pow").removeClass("powOff").addClass("powOn");
   }
 }
 
