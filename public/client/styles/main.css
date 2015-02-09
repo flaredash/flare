@@ -29,6 +29,21 @@ button.wrench { float: right; margin-top: 2px; }
 button.remove-circle { float: right; margin-top: 2px; }
 /* pushes button glyphs down a bit*/
 .glyphicon { top: 2px; }
+/* Online/Offline icons*/
+.powOn { 
+	float: right;
+	padding-left: 12px;
+	padding-top: 4px;
+	color: #78D750;
+	font-size: 20px;
+}
+.powOff { 
+	float: right;
+	padding-left: 12px;
+	padding-top: 4px;
+	color: #CF4B5F;
+	font-size: 20px;
+}
 
 /* dont show rename field by default*/
 .input-group.rename0 { display: none; }
