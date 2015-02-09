@@ -44,8 +44,7 @@ block body
                 a.alert-link(href='#') linky
             .col-md-3.column
           .row.clearfix
-            .col-md-1.column
-            .col-md-5.column
+            .col-md-3.column
               .device0.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device0id, 0)', title='Refresh this device')
@@ -67,7 +66,7 @@ block body
                     .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device0ver}
-            .col-md-5.column
+            .col-md-3.column
               .device1.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device1id, 1)', title='Refresh this device')
@@ -89,10 +88,7 @@ block body
                     .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device1ver}
-            .col-md-1.column
-          .row.clearfix
-            .col-md-1.column
-            .col-md-5.column
+            .col-md-3.column
               .device2.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device2id, 2)', title='Refresh this device')
@@ -114,7 +110,7 @@ block body
                     .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device2ver}
-            .col-md-5.column
+            .col-md-3.column
               .device3.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device3id, 3)', title='Refresh this device')
@@ -136,7 +132,6 @@ block body
                     .glyphicon.glyphicon-cloud(title='Online?', aria-hidden='true')
                   .footer-ver
                     h6 v #{user.customData.device3ver}
-            .col-md-1.column
     .footer
       h6 This is an open source project. Fork it on github <a href="https://github.com/flaredash/flare">here</a>.
       #spinner
