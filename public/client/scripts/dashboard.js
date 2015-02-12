@@ -56,70 +56,6 @@ function saveLength() {
 }
 
 ////////////////////////////////////////
-// Draw panels on dash load
-////////////////////////////////////////
-
-$(window).load(function() {
-  var showPanel0 = document.querySelector('.device0.panel');
-  var showPanel1 = document.querySelector('.device1.panel');
-  var showPanel2 = document.querySelector('.device2.panel');
-  var showPanel3 = document.querySelector('.device3.panel');
-      if (length == 1) {
-        showPanel0.style.display = 'block';
-        drawD0Con();
-      } else if (length == 2) {
-        showPanel0.style.display = 'block';
-        showPanel1.style.display = 'block';
-        drawD0Con();
-        drawD1Con();
-      } else if (length == 3) {
-        showPanel1.style.display = 'block';
-        showPanel2.style.display = 'block';
-        showPanel3.style.display = 'block';
-        drawD0Con();
-        drawD1Con();
-        drawD2Con();
-      } else if (length == 4) {
-        showPanel1.style.display = 'block';
-        showPanel2.style.display = 'block';
-        showPanel3.style.display = 'block';
-        showPanel4.style.display = 'block';
-        drawD0Con();
-        drawD1Con();
-        drawD2Con();
-        drawD3Con();
-      }
-});
-
-function drawD0Con() {
-  if (device0con === 'true') {
-    $("div.device0.panel").removeClass("panel-warning").addClass("panel-success");
-    $("div.device0pow").removeClass("powOff").addClass("powOn");
-  }
-}
-
-function drawD1Con() {
-  if (device1con === 'true') {
-    $("div.device1.panel").removeClass("panel-warning").addClass("panel-success");
-    $("div.device1pow").removeClass("powOff").addClass("powOn");
-  }
-}
-
-function drawD2Con() {
-  if (device2con === 'true') {
-    $("div.device2.panel").removeClass("panel-warning").addClass("panel-success");
-    $("div.device2pow").removeClass("powOff").addClass("powOn");
-  }
-}
-
-function drawD3Con() {
-  if (device3con === 'true') {
-    $("div.device3.panel").removeClass("panel-warning").addClass("panel-success");
-    $("div.device3pow").removeClass("powOff").addClass("powOn");
-  }
-}
-
-////////////////////////////////////////
 // Save general info about all devices
 ////////////////////////////////////////
 
@@ -148,7 +84,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        window.location.reload();
+        // window.location.reload();  // comment for better debug (console won't refresh)
         return;
       }
 
@@ -281,17 +217,12 @@ function getDetails(anyDevice, deviceNumber) {
   var target = document.getElementById('spinner');
   $(target).html(spinner.el);
 
+  //get device details
   var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token;
   $.getJSON(requestURL, function(device) {
       console.log(device);
-      console.log('ID: ' + device.id);
-      console.log('Name: ' + device.name);
-      console.log('Version: ' + device.cc3000_patch_version);
-      console.log('Connected: ' + device.connected);
-      console.log('Variables: ' + device.variables);
-      console.log('Functions: ' + device.functions);
 
-      // Save version to Stormpath
+      //save version to Stormpath
       var verWindow = 'window.device' + deviceNumber + 'id';
       verWindow = device.cc3000_patch_version;
       $.ajax({
@@ -301,7 +232,6 @@ function getDetails(anyDevice, deviceNumber) {
           devicever: verWindow
         },
         success: function(data) {
-          console.log(data);
           console.log('Saved device' + deviceNumber + 'version: ' + verWindow + ' to Stormpath.');
         },
         error: function(err) {
@@ -309,33 +239,62 @@ function getDetails(anyDevice, deviceNumber) {
         }
       });
 
+      //save variables to Stormpath
       if (device.connected === 'false') {
         console.log('Device not currently online.');
       } else {
-        // Save device0 "variables" and "functions" to Stormpath
-        window.device0var = device.variables;
-        window.device0fun = device.functions;
+        var vari = device.variables;
+        var variNum = Object.keys(vari).length;
+        var variArr = Object.keys(vari);
+        console.log('Device' + deviceNumber + ' variables: ' + variArr); //variable array
         $.ajax({
           type: 'POST',
-          url: '/checkdevice',
+          url: '/savevar' + deviceNumber,
           data: {
-            device0var: window.device0var,
-            device0fun: window.device0fun
+            devicevar0: variArr[0],
+            devicevar1: variArr[1],
+            devicevar2: variArr[2],
+            devicevar3: variArr[3],
+            devicevar4: variArr[4],
+            devicevar5: variArr[5],
+            devicevar6: variArr[6],
+            devicevar7: variArr[7],
+            devicevar8: variArr[8],
+            devicevar9: variArr[9],
           },
           success: function() {
-            console.log('Saved device0fun to Stormpath: ' + device0fun);
-            console.log('Saved device0var to Stormpath: ' + device0var);
-
-            var vari = device.variables;
-            var func = device.functions;
-            for (var element in vari) {
-              console.log(element + ": " + vari.element);
-            }
-            for (var element in func) {
-              console.log(element + ": " + func.element);
-            }
+            console.log('Saved device' + deviceNumber + ' variables: ' + variArr);
           }
         });
+
+        //save functions to Stormpath
+        if (device.connected === 'false') {
+          console.log('Device not currently online.');
+        } else {
+          var func = device.functions;
+          var funcNum = Object.keys(func).length;
+          var funcArr = Object.keys(func);
+          console.log('Device' + deviceNumber + ' functions: ' + funcArr); //function array
+          $.ajax({
+            type: 'POST',
+            url: '/savefun' + deviceNumber,
+            data: {
+              devicefun0: funcArr[0],
+              devicefun1: funcArr[1],
+              devicefun2: funcArr[2],
+              devicefun3: funcArr[3],
+              devicefun4: funcArr[4],
+              devicefun5: funcArr[5],
+              devicefun6: funcArr[6],
+              devicefun7: funcArr[7],
+              devicefun8: funcArr[8],
+              devicefun9: funcArr[9],
+            },
+            success: function() {
+              console.log('Saved device' + deviceNumber + ' functions: ' + funcArr);
+            }
+          });
+        }
       }
     })
     .done(function() {
@@ -351,7 +310,80 @@ function getDetails(anyDevice, deviceNumber) {
 }
 
 ////////////////////////////////////////
-// Get a variable
+// Get variable values
+////////////////////////////////////////
+function getVarVal(anyDevice, anyVariable) {
+  var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/' + anyVariable + '?access_token=' + token;
+  $.getJSON(requestURL, function(value) {
+    console.log(value);
+    console.log(value.result);
+    console.log(value.coreInfo.last_heard);
+    // (".device0var0val").html(value.result);
+  });
+}
+  
+
+////////////////////////////////////////
+// Draw panels on dash load
 ////////////////////////////////////////
 
-// GET /v1/devices/{DEVICE_ID}/{VARIABLE}
+$(window).load(function() {
+  var showPanel0 = document.querySelector('.device0.panel');
+  var showPanel1 = document.querySelector('.device1.panel');
+  var showPanel2 = document.querySelector('.device2.panel');
+  var showPanel3 = document.querySelector('.device3.panel');
+      if (length == 1) {
+        showPanel0.style.display = 'block';
+        drawD0Con();
+      } else if (length == 2) {
+        showPanel0.style.display = 'block';
+        showPanel1.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+      } else if (length == 3) {
+        showPanel1.style.display = 'block';
+        showPanel2.style.display = 'block';
+        showPanel3.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+        drawD2Con();
+      } else if (length == 4) {
+        showPanel1.style.display = 'block';
+        showPanel2.style.display = 'block';
+        showPanel3.style.display = 'block';
+        showPanel4.style.display = 'block';
+        drawD0Con();
+        drawD1Con();
+        drawD2Con();
+        drawD3Con();
+      }
+});
+
+function drawD0Con() {
+  if (device0con === 'true') {
+    $("div.device0.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device0pow").removeClass("powOff").addClass("powOn");
+  }
+}
+
+function drawD1Con() {
+  if (device1con === 'true') {
+    $("div.device1.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device1pow").removeClass("powOff").addClass("powOn");
+  }
+}
+
+function drawD2Con() {
+  if (device2con === 'true') {
+    $("div.device2.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device2pow").removeClass("powOff").addClass("powOn");
+  }
+}
+
+function drawD3Con() {
+  if (device3con === 'true') {
+    $("div.device3.panel").removeClass("panel-warning").addClass("panel-success");
+    $("div.device3pow").removeClass("powOff").addClass("powOn");
+  }
+}
+

@@ -178,92 +178,186 @@ app.post('/saveversion3', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////////
-// Save variables and functions from device
+// Save variables from device0
 ////////////////////////////////////////////
 
-// Check devices functions and variables
-app.post('/checkdevice', stormpath.loginRequired, function(req, res) { 
-  req.user.customData.device0var = req.body.device0var;
-  req.user.customData.device0fun = req.body.device0fun;
+// Save device0 variables
+app.post('/savevar0', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device0var0 = req.body.devicevar0;
+  req.user.customData.device0var1 = req.body.devicevar1;
+  req.user.customData.device0var2 = req.body.devicevar2;
+  req.user.customData.device0var3 = req.body.devicevar3;
+  req.user.customData.device0var4 = req.body.devicevar4;
+  req.user.customData.device0var5 = req.body.devicevar5;
+  req.user.customData.device0var6 = req.body.devicevar6;
+  req.user.customData.device0var7 = req.body.devicevar7;
+  req.user.customData.device0var8 = req.body.devicevar8;
+  req.user.customData.device0var9 = req.body.devicevar9;
   req.user.customData.save(function(err) {
     if (!err) {
-      res.send('Device checked for variables and functions');
+      res.send('Device0 checked for variables');
     } else {
-      res.status(500).json({ error: 'Failed to save device4 general data. Try again.' });
+      res.status(500).json({ error: 'Failed to save device0 variables. Try again.' });
+    }
+  });
+});
+
+// Save device1 variables
+app.post('/savevar1', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device1var0 = req.body.devicevar0;
+  req.user.customData.device1var1 = req.body.devicevar1;
+  req.user.customData.device1var2 = req.body.devicevar2;
+  req.user.customData.device1var3 = req.body.devicevar3;
+  req.user.customData.device1var4 = req.body.devicevar4;
+  req.user.customData.device1var5 = req.body.devicevar5;
+  req.user.customData.device1var6 = req.body.devicevar6;
+  req.user.customData.device1var7 = req.body.devicevar7;
+  req.user.customData.device1var8 = req.body.devicevar8;
+  req.user.customData.device1var9 = req.body.devicevar9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device1 checked for variables');
+    } else {
+      res.status(500).json({ error: 'Failed to save device1 variables. Try again.' });
+    }
+  });
+});
+
+// Save device2 variables
+app.post('/savevar2', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device2var0 = req.body.devicevar0;
+  req.user.customData.device2var1 = req.body.devicevar1;
+  req.user.customData.device2var2 = req.body.devicevar2;
+  req.user.customData.device2var3 = req.body.devicevar3;
+  req.user.customData.device2var4 = req.body.devicevar4;
+  req.user.customData.device2var5 = req.body.devicevar5;
+  req.user.customData.device2var6 = req.body.devicevar6;
+  req.user.customData.device2var7 = req.body.devicevar7;
+  req.user.customData.device2var8 = req.body.devicevar8;
+  req.user.customData.device2var9 = req.body.devicevar9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device2 checked for variables');
+    } else {
+      res.status(500).json({ error: 'Failed to save device2 variables. Try again.' });
+    }
+  });
+});
+
+// Save device3 variables
+app.post('/savevar3', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device3var0 = req.body.devicevar0;
+  req.user.customData.device3var1 = req.body.devicevar1;
+  req.user.customData.device3var2 = req.body.devicevar2;
+  req.user.customData.device3var3 = req.body.devicevar3;
+  req.user.customData.device3var4 = req.body.devicevar4;
+  req.user.customData.device3var5 = req.body.devicevar5;
+  req.user.customData.device3var6 = req.body.devicevar6;
+  req.user.customData.device3var7 = req.body.devicevar7;
+  req.user.customData.device3var8 = req.body.devicevar8;
+  req.user.customData.device3var9 = req.body.devicevar9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device3 checked for variables');
+    } else {
+      res.status(500).json({ error: 'Failed to save device3 variables. Try again.' });
+    }
+  });
+});
+
+////////////////////////////////////////////
+// Save functions from device0
+////////////////////////////////////////////
+
+// Save device0 functions
+app.post('/savefun0', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device0fun0 = req.body.devicefun0;
+  req.user.customData.device0fun1 = req.body.devicefun1;
+  req.user.customData.device0fun2 = req.body.devicefun2;
+  req.user.customData.device0fun3 = req.body.devicefun3;
+  req.user.customData.device0fun4 = req.body.devicefun4;
+  req.user.customData.device0fun5 = req.body.devicefun5;
+  req.user.customData.device0fun6 = req.body.devicefun6;
+  req.user.customData.device0fun7 = req.body.devicefun7;
+  req.user.customData.device0fun8 = req.body.devicefun8;
+  req.user.customData.device0fun9 = req.body.devicefun9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device0 checked for functions');
+    } else {
+      res.status(500).json({ error: 'Failed to save device0 functions. Try again.' });
+    }
+  });
+});
+
+// Save device1 functions
+app.post('/savefun1', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device1fun0 = req.body.devicefun0;
+  req.user.customData.device1fun1 = req.body.devicefun1;
+  req.user.customData.device1fun2 = req.body.devicefun2;
+  req.user.customData.device1fun3 = req.body.devicefun3;
+  req.user.customData.device1fun4 = req.body.devicefun4;
+  req.user.customData.device1fun5 = req.body.devicefun5;
+  req.user.customData.device1fun6 = req.body.devicefun6;
+  req.user.customData.device1fun7 = req.body.devicefun7;
+  req.user.customData.device1fun8 = req.body.devicefun8;
+  req.user.customData.device1fun9 = req.body.devicefun9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device1 checked for functions');
+    } else {
+      res.status(500).json({ error: 'Failed to save device1 functions. Try again.' });
+    }
+  });
+});
+
+// Save device2 functions
+app.post('/savefun2', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device2fun0 = req.body.devicefun0;
+  req.user.customData.device2fun1 = req.body.devicefun1;
+  req.user.customData.device2fun2 = req.body.devicefun2;
+  req.user.customData.device2fun3 = req.body.devicefun3;
+  req.user.customData.device2fun4 = req.body.devicefun4;
+  req.user.customData.device2fun5 = req.body.devicefun5;
+  req.user.customData.device2fun6 = req.body.devicefun6;
+  req.user.customData.device2fun7 = req.body.devicefun7;
+  req.user.customData.device2fun8 = req.body.devicefun8;
+  req.user.customData.device2fun9 = req.body.devicefun9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device2 checked for functions');
+    } else {
+      res.status(500).json({ error: 'Failed to save device2 functions. Try again.' });
+    }
+  });
+});
+
+// Save device3 functions
+app.post('/savefun3', stormpath.loginRequired, function(req, res) { 
+  req.user.customData.device3fun0 = req.body.devicefun0;
+  req.user.customData.device3fun1 = req.body.devicefun1;
+  req.user.customData.device3fun2 = req.body.devicefun2;
+  req.user.customData.device3fun3 = req.body.devicefun3;
+  req.user.customData.device3fun4 = req.body.devicefun4;
+  req.user.customData.device3fun5 = req.body.devicefun5;
+  req.user.customData.device3fun6 = req.body.devicefun6;
+  req.user.customData.device3fun7 = req.body.devicefun7;
+  req.user.customData.device3fun8 = req.body.devicefun8;
+  req.user.customData.device3fun9 = req.body.devicefun9;
+  req.user.customData.save(function(err) {
+    if (!err) {
+      res.send('Device3 checked for functions');
+    } else {
+      res.status(500).json({ error: 'Failed to save device3 functions. Try again.' });
     }
   });
 });
 
 ////////////////////////////////////////
-// Device0 individual modules
-////////////////////////////////////////
-
-
-// // Save device0 ID.
-// app.post('/savedevice0id', stormpath.loginRequired, function(req, res) { 
-//   req.user.customData.device0id = req.body.device0id;
-//   req.user.customData.save(function(err) {
-//     if (!err) {
-//       res.send('Spark device0 id: ' + req.user.customData.device0id + ' saved to SP custom data.');
-//     } else {
-//       res.send('Error saving id.');
-//     }
-//   });
-// });
-
-// // Save device0 name.
-// app.post('/savedevice0name', stormpath.loginRequired, function(req, res) { 
-//   req.user.customData.device0name = req.body.device0name;
-//   req.user.customData.save(function(err) {
-//     if (!err) {
-//       res.send('Spark device0 name: ' + req.user.customData.device0name + ' saved to SP custom data.');
-//     } else {
-//       res.send('Error saving name.');
-//     }
-//   });
-// });
-
-// // Save device0 connection status.
-// app.post('/savedevice0con', stormpath.loginRequired, function(req, res) { 
-//   req.user.customData.device0con = req.body.device0con;
-//   req.user.customData.save(function(err) {
-//     if (!err) {
-//       res.send('Spark device0 connected: ' + req.user.customData.device0con + ' saved to SP custom data.');
-//     } else {
-//       res.send('Error saving connection.');
-//     }
-//   });
-// });
-
-// // Save device0 variables.
-// app.post('/savedevice0var', stormpath.loginRequired, function(req, res) { 
-//   req.user.customData.device0var = req.body.device0var;
-//   req.user.customData.save(function(err) {
-//     if (!err) {
-//       res.send('Spark device0 variables: ' + req.user.customData.device0var + ' saved to SP custom data.');
-//     } else {
-//       res.send('Error saving variables.');
-//     }
-//   });
-// });
-
-// // Save device0 functions.
-// app.post('/savedevice0fun', stormpath.loginRequired, function(req, res) { 
-//   req.user.customData.device0fun = req.body.device0fun;
-//   req.user.customData.save(function(err) {
-//     if (!err) {
-//       res.send('Spark device0 functions: ' + req.user.customData.device0fun + ' saved to SP custom data.');
-//     } else {
-//       res.send('Error saving functions.');
-//     }
-//   });
-// });
-
-////////////////////////////////////////
 // Display a user's customdata
 ////////////////////////////////////////
 
-app.get('/getdetails', stormpath.loginRequired, function(req, res) {
+app.get('/userdetails', stormpath.loginRequired, function(req, res) {
   res.json(req.user);
 });
 

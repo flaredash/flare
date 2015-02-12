@@ -2,32 +2,109 @@ extends layout
 
 block body
   script.
+    // General Variables
     var token = ("#{user.customData.token}")
     var length = ("#{user.customData.length}")
+    // Device 0
     var device0id = ("#{user.customData.device0id}")
     var device0name = ("#{user.customData.device0name}")
     var device0ver = ("#{user.customData.device0ver}")
     var device0con = ("#{user.customData.device0con}")
-    var device0var = ("#{user.customData.device0var}")
-    var device0fun = ("#{user.customData.device0fun}")
+    var device0var0 = ("#{user.customData.device0var0}")
+    var device0var1 = ("#{user.customData.device0var1}")
+    var device0var2 = ("#{user.customData.device0var2}")
+    var device0var3 = ("#{user.customData.device0var3}")
+    var device0var4 = ("#{user.customData.device0var4}")
+    var device0var5 = ("#{user.customData.device0var5}")
+    var device0var6 = ("#{user.customData.device0var6}")
+    var device0var7 = ("#{user.customData.device0var7}")
+    var device0var8 = ("#{user.customData.device0var8}")
+    var device0var9 = ("#{user.customData.device0var9}")
+    var device0fun0 = ("#{user.customData.device0fun0}")
+    var device0fun1 = ("#{user.customData.device0fun1}")
+    var device0fun2 = ("#{user.customData.device0fun2}")
+    var device0fun3 = ("#{user.customData.device0fun3}")
+    var device0fun4 = ("#{user.customData.device0fun4}")
+    var device0fun5 = ("#{user.customData.device0fun5}")
+    var device0fun6 = ("#{user.customData.device0fun6}")
+    var device0fun7 = ("#{user.customData.device0fun7}")
+    var device0fun8 = ("#{user.customData.device0fun8}")
+    var device0fun9 = ("#{user.customData.device0fun9}")
+    // Device 1
     var device1id = ("#{user.customData.device1id}")
     var device1name = ("#{user.customData.device1name}")
     var device1ver = ("#{user.customData.device1ver}")
     var device1con = ("#{user.customData.device1con}")
-    var device1var = ("#{user.customData.device1var}")
-    var device1fun = ("#{user.customData.device1fun}")
+    var device1var0 = ("#{user.customData.device1var0}")
+    var device1var1 = ("#{user.customData.device1var1}")
+    var device1var2 = ("#{user.customData.device1var2}")
+    var device1var3 = ("#{user.customData.device1var3}")
+    var device1var4 = ("#{user.customData.device1var4}")
+    var device1var5 = ("#{user.customData.device1var5}")
+    var device1var6 = ("#{user.customData.device1var6}")
+    var device1var7 = ("#{user.customData.device1var7}")
+    var device1var8 = ("#{user.customData.device1var8}")
+    var device1var9 = ("#{user.customData.device1var9}")
+    var device1fun0 = ("#{user.customData.device1fun0}")
+    var device1fun1 = ("#{user.customData.device1fun1}")
+    var device1fun2 = ("#{user.customData.device1fun2}")
+    var device1fun3 = ("#{user.customData.device1fun3}")
+    var device1fun4 = ("#{user.customData.device1fun4}")
+    var device1fun5 = ("#{user.customData.device1fun5}")
+    var device1fun6 = ("#{user.customData.device1fun6}")
+    var device1fun7 = ("#{user.customData.device1fun7}")
+    var device1fun8 = ("#{user.customData.device1fun8}")
+    var device1fun9 = ("#{user.customData.device1fun9}")
+    // Device 2
     var device2id = ("#{user.customData.device2id}")
     var device2name = ("#{user.customData.device2name}")
     var device2ver = ("#{user.customData.device2ver}")
     var device2con = ("#{user.customData.device2con}")
-    var device2var = ("#{user.customData.device2var}")
-    var device2fun = ("#{user.customData.device2fun}")
+    var device2var0 = ("#{user.customData.device2var0}")
+    var device2var1 = ("#{user.customData.device2var1}")
+    var device2var2 = ("#{user.customData.device2var2}")
+    var device2var3 = ("#{user.customData.device2var3}")
+    var device2var4 = ("#{user.customData.device2var4}")
+    var device2var5 = ("#{user.customData.device2var5}")
+    var device2var6 = ("#{user.customData.device2var6}")
+    var device2var7 = ("#{user.customData.device2var7}")
+    var device2var8 = ("#{user.customData.device2var8}")
+    var device2var9 = ("#{user.customData.device2var9}")
+    var device2fun0 = ("#{user.customData.device2fun0}")
+    var device2fun1 = ("#{user.customData.device2fun1}")
+    var device2fun2 = ("#{user.customData.device2fun2}")
+    var device2fun3 = ("#{user.customData.device2fun3}")
+    var device2fun4 = ("#{user.customData.device2fun4}")
+    var device2fun5 = ("#{user.customData.device2fun5}")
+    var device2fun6 = ("#{user.customData.device2fun6}")
+    var device2fun7 = ("#{user.customData.device2fun7}")
+    var device2fun8 = ("#{user.customData.device2fun8}")
+    var device2fun9 = ("#{user.customData.device2fun9}")
+    // Device 3
     var device3id = ("#{user.customData.device3id}")
     var device3name = ("#{user.customData.device3name}")
     var device3ver = ("#{user.customData.device3ver}")
     var device3con = ("#{user.customData.device3con}")
-    var device3var = ("#{user.customData.device3var}")
-    var device3fun = ("#{user.customData.device3fun}")
+    var device3var0 = ("#{user.customData.device3var0}")
+    var device3var1 = ("#{user.customData.device3var1}")
+    var device3var2 = ("#{user.customData.device3var2}")
+    var device3var3 = ("#{user.customData.device3var3}")
+    var device3var4 = ("#{user.customData.device3var4}")
+    var device3var5 = ("#{user.customData.device3var5}")
+    var device3var6 = ("#{user.customData.device3var6}")
+    var device3var7 = ("#{user.customData.device3var7}")
+    var device3var8 = ("#{user.customData.device3var8}")
+    var device3var9 = ("#{user.customData.device3var9}")
+    var device3fun0 = ("#{user.customData.device3fun0}")
+    var device3fun1 = ("#{user.customData.device3fun1}")
+    var device3fun2 = ("#{user.customData.device3fun2}")
+    var device3fun3 = ("#{user.customData.device3fun3}")
+    var device3fun4 = ("#{user.customData.device3fun4}")
+    var device3fun5 = ("#{user.customData.device3fun5}")
+    var device3fun6 = ("#{user.customData.device3fun6}")
+    var device3fun7 = ("#{user.customData.device3fun7}")
+    var device3fun8 = ("#{user.customData.device3fun8}")
+    var device3fun9 = ("#{user.customData.device3fun9}")
   .container
       .row.clearfix
         .col-md-12.column
@@ -57,8 +134,52 @@ block body
                       button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
                     input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables: #{user.customData.device0var}
-                  h6 Functions: #{user.customData.device0fun}
+                  h6 Variables:
+                  // Check for variables before displaying
+                  -if (user.customData.device0var0 != null)
+                    button(onclick='getVarVal(device0id, device0var0)' title='Refresh this variable') #{user.customData.device0var0}:
+                     .device0var0val
+                  -if (user.customData.device0var1 != null)
+                    h6 #{user.customData.device0var1} : WEAVE1
+                  -if (user.customData.device0var2 != null)
+                    h6 #{user.customData.device0var2} : WEAVE2
+                  -if (user.customData.device0var3 != null)
+                    h6 #{user.customData.device0var3} : WEAVE3
+                  -if (user.customData.device0var4 != null)
+                    h6 #{user.customData.device0var4} : WEAVE4
+                  -if (user.customData.device0var5 != null)
+                    h6 #{user.customData.device0var5} : WEAVE5
+                  -if (user.customData.device0var6 != null)
+                    h6 #{user.customData.device0var6} : WEAVE6
+                  -if (user.customData.device0var7 != null)
+                    h6 #{user.customData.device0var7} : WEAVE7
+                  -if (user.customData.device0var8 != null)
+                    h6 #{user.customData.device0var8} : WEAVE8
+                  -if (user.customData.device0var9 != null)
+                    h6 #{user.customData.device0var9} : WEAVE9
+                  hr
+                  h6 Functions:
+                  // Check for functions before displaying
+                  -if (user.customData.device0fun0 != null)
+                    h6 #{user.customData.device0fun0} : WEAVE
+                  -if (user.customData.device0fun1 != null)
+                    h6 #{user.customData.device0fun1} : WEAVE1
+                  -if (user.customData.device0fun2 != null)
+                    h6 #{user.customData.device0fun2} : WEAVE2
+                  -if (user.customData.device0fun3 != null)
+                    h6 #{user.customData.device0fun3} : WEAVE3
+                  -if (user.customData.device0fun4 != null)
+                    h6 #{user.customData.device0fun4} : WEAVE4
+                  -if (user.customData.device0fun5 != null)
+                    h6 #{user.customData.device0fun5} : WEAVE5
+                  -if (user.customData.device0fun6 != null)
+                    h6 #{user.customData.device0fun6} : WEAVE6
+                  -if (user.customData.device0fun7 != null)
+                    h6 #{user.customData.device0fun7} : WEAVE7
+                  -if (user.customData.device0fun8 != null)
+                    h6 #{user.customData.device0fun8} : WEAVE8
+                  -if (user.customData.device0fun9 != null)
+                    h6 #{user.customData.device0fun9} : WEAVE9
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device0id}
@@ -79,8 +200,50 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device1id, 1)') Rename
                       input.form-control(action='/dashboard', method='post', id='1renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables: #{user.customData.device1var}
-                  h6 Functions: #{user.customData.device1fun}
+                  h6 Variables:
+                  // Check for variables before displaying
+                  -if (user.customData.device1var0 != null)
+                    h6 #{user.customData.device1var0} : WEAVE
+                  -if (user.customData.device1var1 != null)
+                    h6 #{user.customData.device1var1} : WEAVE1
+                  -if (user.customData.device1var2 != null)
+                    h6 #{user.customData.device1var2} : WEAVE2
+                  -if (user.customData.device1var3 != null)
+                    h6 #{user.customData.device1var3} : WEAVE3
+                  -if (user.customData.device1var4 != null)
+                    h6 #{user.customData.device1var4} : WEAVE4
+                  -if (user.customData.device1var5 != null)
+                    h6 #{user.customData.device1var5} : WEAVE5
+                  -if (user.customData.device1var6 != null)
+                    h6 #{user.customData.device1var6} : WEAVE6
+                  -if (user.customData.device1var7 != null)
+                    h6 #{user.customData.device1var7} : WEAVE7
+                  -if (user.customData.device1var8 != null)
+                    h6 #{user.customData.device1var8} : WEAVE8
+                  -if (user.customData.device1var9 != null)
+                    h6 #{user.customData.device1var9} : WEAVE9
+                  h6 Functions:
+                  // Check for functions before displaying
+                  -if (user.customData.device1fun0 != null)
+                    h6 #{user.customData.device1fun0} : WEAVE
+                  -if (user.customData.device1fun1 != null)
+                    h6 #{user.customData.device1fun1} : WEAVE1
+                  -if (user.customData.device1fun2 != null)
+                    h6 #{user.customData.device1fun2} : WEAVE2
+                  -if (user.customData.device1fun3 != null)
+                    h6 #{user.customData.device1fun3} : WEAVE3
+                  -if (user.customData.device1fun4 != null)
+                    h6 #{user.customData.device1fun4} : WEAVE4
+                  -if (user.customData.device1fun5 != null)
+                    h6 #{user.customData.device1fun5} : WEAVE5
+                  -if (user.customData.device1fun6 != null)
+                    h6 #{user.customData.device1fun6} : WEAVE6
+                  -if (user.customData.device1fun7 != null)
+                    h6 #{user.customData.device1fun7} : WEAVE7
+                  -if (user.customData.device1fun8 != null)
+                    h6 #{user.customData.device1fun8} : WEAVE8
+                  -if (user.customData.device1fun9 != null)
+                    h6 #{user.customData.device1fun9} : WEAVE9
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device1id}
@@ -101,8 +264,50 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device2id, 2)') Rename
                       input.form-control(action='/dashboard', method='post', id='2renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables: #{user.customData.device2var}
-                  h6 Functions: #{user.customData.device2fun}
+                  h6 Variables:
+                  // Check for variables before displaying
+                  -if (user.customData.device2var0 != null)
+                    h6 #{user.customData.device2var0} : WEAVE
+                  -if (user.customData.device2var1 != null)
+                    h6 #{user.customData.device2var1} : WEAVE1
+                  -if (user.customData.device2var2 != null)
+                    h6 #{user.customData.device2var2} : WEAVE2
+                  -if (user.customData.device2var3 != null)
+                    h6 #{user.customData.device2var3} : WEAVE3
+                  -if (user.customData.device2var4 != null)
+                    h6 #{user.customData.device2var4} : WEAVE4
+                  -if (user.customData.device2var5 != null)
+                    h6 #{user.customData.device2var5} : WEAVE5
+                  -if (user.customData.device2var6 != null)
+                    h6 #{user.customData.device2var6} : WEAVE6
+                  -if (user.customData.device2var7 != null)
+                    h6 #{user.customData.device2var7} : WEAVE7
+                  -if (user.customData.device2var8 != null)
+                    h6 #{user.customData.device2var8} : WEAVE8
+                  -if (user.customData.device2var9 != null)
+                    h6 #{user.customData.device2var9} : WEAVE9
+                  h6 Functions:
+                  // Check for functions before displaying
+                  -if (user.customData.device2fun0 != null)
+                    h6 #{user.customData.device2fun0} : WEAVE
+                  -if (user.customData.device2fun1 != null)
+                    h6 #{user.customData.device2fun1} : WEAVE1
+                  -if (user.customData.device2fun2 != null)
+                    h6 #{user.customData.device2fun2} : WEAVE2
+                  -if (user.customData.device2fun3 != null)
+                    h6 #{user.customData.device2fun3} : WEAVE3
+                  -if (user.customData.device2fun4 != null)
+                    h6 #{user.customData.device2fun4} : WEAVE4
+                  -if (user.customData.device2fun5 != null)
+                    h6 #{user.customData.device2fun5} : WEAVE5
+                  -if (user.customData.device2fun6 != null)
+                    h6 #{user.customData.device2fun6} : WEAVE6
+                  -if (user.customData.device2fun7 != null)
+                    h6 #{user.customData.device2fun7} : WEAVE7
+                  -if (user.customData.device2fun8 != null)
+                    h6 #{user.customData.device2fun8} : WEAVE8
+                  -if (user.customData.device2fun9 != null)
+                    h6 #{user.customData.device2fun9} : WEAVE9
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device2id}
@@ -123,8 +328,50 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device3id, 3)') Rename
                       input.form-control(action='/dashboard', method='post', id='3renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables: #{user.customData.device3var}
-                  h6 Functions: #{user.customData.device3fun}
+                  h6 Variables:
+                  // Check for variables before displaying
+                  -if (user.customData.device3var0 != null)
+                    h6 #{user.customData.device3var0} : WEAVE
+                  -if (user.customData.device3var1 != null)
+                    h6 #{user.customData.device3var1} : WEAVE1
+                  -if (user.customData.device3var2 != null)
+                    h6 #{user.customData.device3var2} : WEAVE2
+                  -if (user.customData.device3var3 != null)
+                    h6 #{user.customData.device3var3} : WEAVE3
+                  -if (user.customData.device3var4 != null)
+                    h6 #{user.customData.device3var4} : WEAVE4
+                  -if (user.customData.device3var5 != null)
+                    h6 #{user.customData.device3var5} : WEAVE5
+                  -if (user.customData.device3var6 != null)
+                    h6 #{user.customData.device3var6} : WEAVE6
+                  -if (user.customData.device3var7 != null)
+                    h6 #{user.customData.device3var7} : WEAVE7
+                  -if (user.customData.device3var8 != null)
+                    h6 #{user.customData.device3var8} : WEAVE8
+                  -if (user.customData.device3var9 != null)
+                    h6 #{user.customData.device3var9} : WEAVE9
+                  h6 Functions:
+                  // Check for functions before displaying
+                  -if (user.customData.device3fun0 != null)
+                    h6 #{user.customData.device3fun0} : WEAVE
+                  -if (user.customData.device3fun1 != null)
+                    h6 #{user.customData.device3fun1} : WEAVE1
+                  -if (user.customData.device3fun2 != null)
+                    h6 #{user.customData.device3fun2} : WEAVE2
+                  -if (user.customData.device3fun3 != null)
+                    h6 #{user.customData.device3fun3} : WEAVE3
+                  -if (user.customData.device3fun4 != null)
+                    h6 #{user.customData.device3fun4} : WEAVE4
+                  -if (user.customData.device3fun5 != null)
+                    h6 #{user.customData.device3fun5} : WEAVE5
+                  -if (user.customData.device3fun6 != null)
+                    h6 #{user.customData.device3fun6} : WEAVE6
+                  -if (user.customData.device3fun7 != null)
+                    h6 #{user.customData.device3fun7} : WEAVE7
+                  -if (user.customData.device3fun8 != null)
+                    h6 #{user.customData.device3fun8} : WEAVE8
+                  -if (user.customData.device3fun9 != null)
+                    h6 #{user.customData.device3fun9} : WEAVE9
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device3id}
