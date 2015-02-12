@@ -84,7 +84,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        // window.location.reload();  // comment for better debug (console won't refresh)
+        window.location.reload();  // comment for better debug (console won't refresh)
         return;
       }
 
@@ -312,16 +312,16 @@ function getDetails(anyDevice, deviceNumber) {
 ////////////////////////////////////////
 // Get variable values
 ////////////////////////////////////////
-function getVarVal(anyDevice, anyVariable) {
+
+function getVarVal(anyDevice, anyVariable, deviceNumber, variableNumber) {
   var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/' + anyVariable + '?access_token=' + token;
   $.getJSON(requestURL, function(value) {
-    console.log(value);
-    console.log(value.result);
-    console.log(value.coreInfo.last_heard);
-    // (".device0var0val").html(value.result);
+    var valueDiv = '.varval.device' + deviceNumber + 'var' + variableNumber;
+    var lastHeardDiv = '.lastheard.device' + deviceNumber + 'var' + variableNumber;
+    $(valueDiv).html(value.result);
+    $(lastHeardDiv).html(value.coreInfo.last_heard);
   });
 }
-  
 
 ////////////////////////////////////////
 // Draw panels on dash load
@@ -386,4 +386,3 @@ function drawD3Con() {
     $("div.device3pow").removeClass("powOff").addClass("powOn");
   }
 }
-

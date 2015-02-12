@@ -47,6 +47,22 @@ button.remove-circle { float: right; margin-top: 2px; }
 	color: #CF4B5F;
 	font-size: 20px;
 }
+/* variable value */
+.varval {
+  display: inline;
+  padding-left: 5px;
+  font-weight: 500;
+}
+/* last heard value */
+.lastheard {
+  font-size: 10px;
+  display: inline;
+  padding-left: 5px;
+}
+/* push var/func buttons to new line*/
+.panel-body button {
+  display: block;
+}
 
 /* dont show rename field by default*/
 .input-group.rename0 { display: none; }
