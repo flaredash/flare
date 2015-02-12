@@ -137,14 +137,21 @@ block body
                   h6 Variables:
                   // Check for variables before displaying
                   -if (user.customData.device0var0 != null)
-                    button(onclick='getVarVal(device0id, device0var0)' title='Refresh this variable') #{user.customData.device0var0}:
-                     .device0var0val
+                    button(onclick='getVarVal(device0id, device0var0, 0, 0)' title='Refresh this variable') #{user.customData.device0var0}:
+                      .varval.device0var0
+                      .lastheard.device0var0
                   -if (user.customData.device0var1 != null)
-                    h6 #{user.customData.device0var1} : WEAVE1
+                    button(onclick='getVarVal(device0id, device0var1, 0, 1)' title='Refresh this variable') #{user.customData.device0var1}
+                    .varval.device0var1
+                    .lastheard.device0var1
                   -if (user.customData.device0var2 != null)
-                    h6 #{user.customData.device0var2} : WEAVE2
+                    button(onclick='getVarVal(device0id, device0var2, 0, 2)' title='Refresh this variable') #{user.customData.device0var2}
+                    .varval.device0var2
+                    .lastheard.device0var2
                   -if (user.customData.device0var3 != null)
-                    h6 #{user.customData.device0var3} : WEAVE3
+                    button(onclick='getVarVal(device0id, device0var3, 0, 3)' title='Refresh this variable') #{user.customData.device0var3}
+                    .varval.device0var3
+                    .lastheard.device0var3
                   -if (user.customData.device0var4 != null)
                     h6 #{user.customData.device0var4} : WEAVE4
                   -if (user.customData.device0var5 != null)
