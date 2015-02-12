@@ -126,7 +126,7 @@ app.post('/savedevice3', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////
-// Save device version
+// Save version from devices
 ////////////////////////////////////////
 
 // Save device0 version
@@ -178,7 +178,7 @@ app.post('/saveversion3', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////////
-// Save variables from device0
+// Save variables from devices
 ////////////////////////////////////////////
 
 // Save device0 variables
@@ -266,7 +266,7 @@ app.post('/savevar3', stormpath.loginRequired, function(req, res) {
 });
 
 ////////////////////////////////////////////
-// Save functions from device0
+// Save functions from devices
 ////////////////////////////////////////////
 
 // Save device0 functions
