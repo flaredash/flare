@@ -95,6 +95,12 @@ ul#settings li.settings { background-color: red; }
 ul#logout li.logout { background-color: red; }
 ul#login li.login { background-color: red; }
 
+.funcreturn {
+  text-align: center;
+  font-weight: 500;
+  padding-top: 2px;
+}
+
 /* footer */
 
 .footer {

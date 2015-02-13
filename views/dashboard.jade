@@ -265,6 +265,7 @@ block body
                       span.input-group-btn
                         button.btn.btn-default(type='button', onclick='runFunc(device1id, device1fun0, 1, 0)') #{user.customData.device1fun0}
                       input.form-control(action='/dashboard', method='post', id='device1fun0', type='text', placeholder='Arguments', name='sparkfunc')
+                    .funcreturn.device1fun0
                   -if (user.customData.device1fun1 != null)
                     .input-group.func1
                       span.input-group-btn
