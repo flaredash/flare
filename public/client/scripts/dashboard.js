@@ -316,6 +316,20 @@ function getVarVal(anyDevice, anyVariable, deviceNumber, variableNumber) {
 }
 
 ////////////////////////////////////////
+// Run function
+////////////////////////////////////////
+function runFunc(anyDevice, anyFunction, deviceNumber, functionNumber) {
+  var lol = document.getElementById('device' + deviceNumber + 'fun' + functionNumber);
+  $.post('https://api.spark.io/v1/devices/' + anyDevice + '/' + anyFunction + '/', {
+      'access_token': token,
+      'args': lol.value
+    },
+    function(result) {
+      console.log(result.return_value);
+    });
+}
+
+////////////////////////////////////////
 // Draw panels on dash load
 ////////////////////////////////////////
 
