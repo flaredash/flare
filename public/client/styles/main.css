@@ -121,9 +121,12 @@ ul#login li.login { background-color: red; }
   background: white;
 }
 .spark-login-modal {
-  position:absolute;
-  top: 25%;
-  bottom: 25%;
+  position: absolute !important;
+  margin-top: 40%;
+  margin-bottom: 30%;
+  margin-left: 50%;
+  border-radius: 3px !important;
+  padding-bottom: 200px !important;
 }
 
 .spark-login-button {
@@ -133,6 +136,10 @@ ul#login li.login { background-color: red; }
 
 .spark-login-input {
   border: 1px solid #D1D4DF !important;
+}
+
+#spark-login {
+  text-align: center;
 }
 
 /*set spinner container*/
