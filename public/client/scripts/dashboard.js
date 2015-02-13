@@ -84,7 +84,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        window.location.reload();  // comment for better debug (console won't refresh)
+        //window.location.reload();  // comment for better debug (console won't refresh)
         return;
       }
 
@@ -261,6 +261,7 @@ function getDetails(anyDevice, deviceNumber) {
             devicevar7: variArr[7],
             devicevar8: variArr[8],
             devicevar9: variArr[9],
+            devicevar10: variArr[10],
           },
           success: function() {
             console.log('Saved device' + deviceNumber + ' variables: ' + variArr);
@@ -272,26 +273,17 @@ function getDetails(anyDevice, deviceNumber) {
           console.log('Device not currently online.');
         } else {
           var func = device.functions;
-          var funcNum = Object.keys(func).length;
-          var funcArr = Object.keys(func);
-          console.log('Device' + deviceNumber + ' functions: ' + funcArr); //function array
           $.ajax({
             type: 'POST',
             url: '/savefun' + deviceNumber,
             data: {
-              devicefun0: funcArr[0],
-              devicefun1: funcArr[1],
-              devicefun2: funcArr[2],
-              devicefun3: funcArr[3],
-              devicefun4: funcArr[4],
-              devicefun5: funcArr[5],
-              devicefun6: funcArr[6],
-              devicefun7: funcArr[7],
-              devicefun8: funcArr[8],
-              devicefun9: funcArr[9],
+              devicefun0: func[0],
+              devicefun1: func[1],
+              devicefun2: func[2],
+              devicefun3: func[3],
             },
             success: function() {
-              console.log('Saved device' + deviceNumber + ' functions: ' + funcArr);
+              console.log('Saved device' + deviceNumber + ' functions: ' + func);
             }
           });
         }
