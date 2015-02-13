@@ -3,10 +3,62 @@ extends layout
 block body
 
   #welcome.jumbotron
-    h3 Welcome to Flare, a Spark dashboard.
-    p.lead.
-      Please login or register.
-    p.bigbutton
-      a.bigbutton.btn.btn-lg.btn-primary(href='/register', role='button') Register
-  #footer
+    b This is a dashboard for the management of 
+    a(href='https://store.spark.io/', target='_blank') devices
+    b  from 
+    a(href='https://www.spark.io/', target='_blank') Spark.io
+    b . The use of this tool is hopefully intuitive - to get started:
+    br
+    br
+    b 1.) 
+    | Visit the 
+    a(href='http://flaredashboard.herokuapp.com/settings', target='_blank') settings
+    | page and add a Spark token. This only has to be done
+    | once as it is stored in your 
+    a(href='http://flaredashboard.herokuapp.com/userdetails', target='_blank') personal database
+    |  for ease of use. If you ever
+    | want to change or remove your token, simply click the remove token button on
+    | the settings page.
+    br
+    br
+    b 2.) 
+    | Once you have a token, visit the 
+    a(href='http://flaredashboard.herokuapp.com/dashboard', target='_blank') dashboard
+    |  and click the "Get Devices"
+    | button. This will call Spark and gather general details about the devices on
+    | your Spark account. These details are saved to your database and can be refreshed
+    | by simply clicking the button again. The only time you might need to click this
+    | again would be if you add or remove devices from your account.
+    br
+    br
+    b 3.) 
+    | Each device has some tools in the device header. By using the "Refresh
+    | this device" button, a call is made to Spark for more details about that specific
+    | device including variable and functions. These are added to your database. By using
+    | the "Rename this device" button, a form is made available through which you can rename
+    | that particular device.
+    br
+    br
+    b 4.) 
+    | Once you have used the "Get devices" button and the "Refresh" button for each
+    | device on your account, you are good to go unless you change firmware. In this case
+    | you will want to click "Refresh" again for the devices that have changed so the
+    | changes are made evident via the dashboard.
+    br
+    br
+    b 5.) 
+    | Once variable buttons appear, you can click them repeatedly
+    | to get updated values.
+    br
+    br
+    b 6.) 
+    | To use the functions on your device, simply pass arguments via the functions
+    | form.
+    br
+    br
+    b We greatly appreciate feedback in how we can make this tool better. There are surely
+    b ways that the code can be refactored to make it more simple and readable. Please get
+    b involved! The repo can be found 
+    a(href='https://github.com/flaredash/flare', target='_blank') here.
+  .footer
     h6 This is an open source project. Fork it on github <a href="https://github.com/flaredash/flare">here</a>.
