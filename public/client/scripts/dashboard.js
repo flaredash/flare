@@ -233,72 +233,88 @@ function getDetails(anyDevice, deviceNumber) {
         },
         success: function(data) {
           console.log('Saved device' + deviceNumber + 'version: ' + verWindow + ' to Stormpath.');
+          // save variable names to Stormpath
+          saveVariables(anyDevice, deviceNumber);
         },
         error: function(err) {
           console.log('getDetails: version ajax failed: ', err);
         }
       });
-
-      //save variables to Stormpath
-      if (device.connected === 'false') {
-        console.log('Device not currently online.');
-      } else {
-        var vari = device.variables;
-        var variNum = Object.keys(vari).length;
-        var variArr = Object.keys(vari);
-        console.log('Device' + deviceNumber + ' variables: ' + variArr); //variable array
-        $.ajax({
-          type: 'POST',
-          url: '/savevar' + deviceNumber,
-          data: {
-            devicevar0: variArr[0],
-            devicevar1: variArr[1],
-            devicevar2: variArr[2],
-            devicevar3: variArr[3],
-            devicevar4: variArr[4],
-            devicevar5: variArr[5],
-            devicevar6: variArr[6],
-            devicevar7: variArr[7],
-            devicevar8: variArr[8],
-            devicevar9: variArr[9],
-            devicevar10: variArr[10],
-          },
-          success: function() {
-            console.log('Saved device' + deviceNumber + ' variables: ' + variArr);
-          }
-        });
-
-        //save functions to Stormpath
-        if (device.connected === 'false') {
-          console.log('Device not currently online.');
-        } else {
-          var func = device.functions;
-          $.ajax({
-            type: 'POST',
-            url: '/savefun' + deviceNumber,
-            data: {
-              devicefun0: func[0],
-              devicefun1: func[1],
-              devicefun2: func[2],
-              devicefun3: func[3],
-            },
-            success: function() {
-              console.log('Saved device' + deviceNumber + ' functions: ' + func);
-            }
-          });
-        }
-      }
     })
     .done(function() {
-      // spinner gets stopped after saveDevices()
-      // $('#spinner').hide().empty();
       saveDevices();
-
     })
     .fail(function() {
       console.log("getDetails request failed");
       $('#spinner').hide().empty();
     });
+}
+
+////////////////////////////////////////
+// Save variables to Stormpath
+////////////////////////////////////////
+
+function saveVariables(anyDevice, deviceNumber) {
+  var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token;
+  $.getJSON(requestURL, function(device) {
+    if (device.connected === 'false') {
+      console.log('Device not currently online.');
+    } else {
+      var vari = device.variables;
+      var variNum = Object.keys(vari).length;
+      var variArr = Object.keys(vari);
+      console.log('Device' + deviceNumber + ' variables: ' + variArr); //variable array
+      $.ajax({
+        type: 'POST',
+        url: '/savevar' + deviceNumber,
+        data: {
+          devicevar0: variArr[0],
+          devicevar1: variArr[1],
+          devicevar2: variArr[2],
+          devicevar3: variArr[3],
+          devicevar4: variArr[4],
+          devicevar5: variArr[5],
+          devicevar6: variArr[6],
+          devicevar7: variArr[7],
+          devicevar8: variArr[8],
+          devicevar9: variArr[9],
+          devicevar10: variArr[10],
+        },
+        success: function() {
+          console.log('Saved device' + deviceNumber + ' variables: ' + variArr);
+          saveFunctions(anyDevice, deviceNumber);
+        }
+      });
+    }
+  });
+}
+
+////////////////////////////////////////
+// Save functions to Stormpath
+////////////////////////////////////////
+
+function saveFunctions(anyDevice, deviceNumber) {
+  var requestURL = 'https://api.spark.io/v1/devices/' + anyDevice + '/?access_token=' + token;
+  $.getJSON(requestURL, function(device) {
+    if (device.connected === 'false') {
+      console.log('Device not currently online.');
+    } else {
+      var func = device.functions;
+      $.ajax({
+        type: 'POST',
+        url: '/savefun' + deviceNumber,
+        data: {
+          devicefun0: func[0],
+          devicefun1: func[1],
+          devicefun2: func[2],
+          devicefun3: func[3],
+        },
+        success: function() {
+          console.log('Saved device' + deviceNumber + ' functions: ' + func);
+        }
+      });
+    }
+  });
 }
 
 ////////////////////////////////////////
@@ -318,14 +334,17 @@ function getVarVal(anyDevice, anyVariable, deviceNumber, variableNumber) {
 ////////////////////////////////////////
 // Run function
 ////////////////////////////////////////
+
 function runFunc(anyDevice, anyFunction, deviceNumber, functionNumber) {
-  var lol = document.getElementById('device' + deviceNumber + 'fun' + functionNumber);
+  var arg = document.getElementById('device' + deviceNumber + 'fun' + functionNumber);
+  var funcReturnDiv = '.funcreturn.device' + deviceNumber + 'fun' + functionNumber;
   $.post('https://api.spark.io/v1/devices/' + anyDevice + '/' + anyFunction + '/', {
       'access_token': token,
-      'args': lol.value
+      'args': arg.value
     },
     function(result) {
       console.log(result.return_value);
+      $(funcReturnDiv).html(anyFunction + ' returned: ' + result.return_value);
     });
 }
 
