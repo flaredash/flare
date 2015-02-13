@@ -193,6 +193,7 @@ app.post('/savevar0', stormpath.loginRequired, function(req, res) {
   req.user.customData.device0var7 = req.body.devicevar7;
   req.user.customData.device0var8 = req.body.devicevar8;
   req.user.customData.device0var9 = req.body.devicevar9;
+  req.user.customData.device0var9 = req.body.devicevar10;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device0 checked for variables');
@@ -214,6 +215,7 @@ app.post('/savevar1', stormpath.loginRequired, function(req, res) {
   req.user.customData.device1var7 = req.body.devicevar7;
   req.user.customData.device1var8 = req.body.devicevar8;
   req.user.customData.device1var9 = req.body.devicevar9;
+  req.user.customData.device0var9 = req.body.devicevar10;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device1 checked for variables');
@@ -235,6 +237,7 @@ app.post('/savevar2', stormpath.loginRequired, function(req, res) {
   req.user.customData.device2var7 = req.body.devicevar7;
   req.user.customData.device2var8 = req.body.devicevar8;
   req.user.customData.device2var9 = req.body.devicevar9;
+  req.user.customData.device0var9 = req.body.devicevar10;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device2 checked for variables');
@@ -256,6 +259,7 @@ app.post('/savevar3', stormpath.loginRequired, function(req, res) {
   req.user.customData.device3var7 = req.body.devicevar7;
   req.user.customData.device3var8 = req.body.devicevar8;
   req.user.customData.device3var9 = req.body.devicevar9;
+  req.user.customData.device0var9 = req.body.devicevar10;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device3 checked for variables');
@@ -275,12 +279,6 @@ app.post('/savefun0', stormpath.loginRequired, function(req, res) {
   req.user.customData.device0fun1 = req.body.devicefun1;
   req.user.customData.device0fun2 = req.body.devicefun2;
   req.user.customData.device0fun3 = req.body.devicefun3;
-  req.user.customData.device0fun4 = req.body.devicefun4;
-  req.user.customData.device0fun5 = req.body.devicefun5;
-  req.user.customData.device0fun6 = req.body.devicefun6;
-  req.user.customData.device0fun7 = req.body.devicefun7;
-  req.user.customData.device0fun8 = req.body.devicefun8;
-  req.user.customData.device0fun9 = req.body.devicefun9;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device0 checked for functions');
@@ -296,15 +294,10 @@ app.post('/savefun1', stormpath.loginRequired, function(req, res) {
   req.user.customData.device1fun1 = req.body.devicefun1;
   req.user.customData.device1fun2 = req.body.devicefun2;
   req.user.customData.device1fun3 = req.body.devicefun3;
-  req.user.customData.device1fun4 = req.body.devicefun4;
-  req.user.customData.device1fun5 = req.body.devicefun5;
-  req.user.customData.device1fun6 = req.body.devicefun6;
-  req.user.customData.device1fun7 = req.body.devicefun7;
-  req.user.customData.device1fun8 = req.body.devicefun8;
-  req.user.customData.device1fun9 = req.body.devicefun9;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device1 checked for functions');
+      console.log(req.bodydevicefun0);
     } else {
       res.status(500).json({ error: 'Failed to save device1 functions. Try again.' });
     }
@@ -317,12 +310,6 @@ app.post('/savefun2', stormpath.loginRequired, function(req, res) {
   req.user.customData.device2fun1 = req.body.devicefun1;
   req.user.customData.device2fun2 = req.body.devicefun2;
   req.user.customData.device2fun3 = req.body.devicefun3;
-  req.user.customData.device2fun4 = req.body.devicefun4;
-  req.user.customData.device2fun5 = req.body.devicefun5;
-  req.user.customData.device2fun6 = req.body.devicefun6;
-  req.user.customData.device2fun7 = req.body.devicefun7;
-  req.user.customData.device2fun8 = req.body.devicefun8;
-  req.user.customData.device2fun9 = req.body.devicefun9;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device2 checked for functions');
@@ -338,12 +325,6 @@ app.post('/savefun3', stormpath.loginRequired, function(req, res) {
   req.user.customData.device3fun1 = req.body.devicefun1;
   req.user.customData.device3fun2 = req.body.devicefun2;
   req.user.customData.device3fun3 = req.body.devicefun3;
-  req.user.customData.device3fun4 = req.body.devicefun4;
-  req.user.customData.device3fun5 = req.body.devicefun5;
-  req.user.customData.device3fun6 = req.body.devicefun6;
-  req.user.customData.device3fun7 = req.body.devicefun7;
-  req.user.customData.device3fun8 = req.body.devicefun8;
-  req.user.customData.device3fun9 = req.body.devicefun9;
   req.user.customData.save(function(err) {
     if (!err) {
       res.send('Device3 checked for functions');

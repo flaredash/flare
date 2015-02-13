@@ -20,16 +20,11 @@ block body
     var device0var7 = ("#{user.customData.device0var7}")
     var device0var8 = ("#{user.customData.device0var8}")
     var device0var9 = ("#{user.customData.device0var9}")
+    var device0var10 = ("#{user.customData.device0var10}")
     var device0fun0 = ("#{user.customData.device0fun0}")
     var device0fun1 = ("#{user.customData.device0fun1}")
     var device0fun2 = ("#{user.customData.device0fun2}")
     var device0fun3 = ("#{user.customData.device0fun3}")
-    var device0fun4 = ("#{user.customData.device0fun4}")
-    var device0fun5 = ("#{user.customData.device0fun5}")
-    var device0fun6 = ("#{user.customData.device0fun6}")
-    var device0fun7 = ("#{user.customData.device0fun7}")
-    var device0fun8 = ("#{user.customData.device0fun8}")
-    var device0fun9 = ("#{user.customData.device0fun9}")
     // Device 1
     var device1id = ("#{user.customData.device1id}")
     var device1name = ("#{user.customData.device1name}")
@@ -45,16 +40,11 @@ block body
     var device1var7 = ("#{user.customData.device1var7}")
     var device1var8 = ("#{user.customData.device1var8}")
     var device1var9 = ("#{user.customData.device1var9}")
+    var device1var10 = ("#{user.customData.device1var10}")
     var device1fun0 = ("#{user.customData.device1fun0}")
     var device1fun1 = ("#{user.customData.device1fun1}")
     var device1fun2 = ("#{user.customData.device1fun2}")
     var device1fun3 = ("#{user.customData.device1fun3}")
-    var device1fun4 = ("#{user.customData.device1fun4}")
-    var device1fun5 = ("#{user.customData.device1fun5}")
-    var device1fun6 = ("#{user.customData.device1fun6}")
-    var device1fun7 = ("#{user.customData.device1fun7}")
-    var device1fun8 = ("#{user.customData.device1fun8}")
-    var device1fun9 = ("#{user.customData.device1fun9}")
     // Device 2
     var device2id = ("#{user.customData.device2id}")
     var device2name = ("#{user.customData.device2name}")
@@ -70,16 +60,11 @@ block body
     var device2var7 = ("#{user.customData.device2var7}")
     var device2var8 = ("#{user.customData.device2var8}")
     var device2var9 = ("#{user.customData.device2var9}")
+    var device2var10 = ("#{user.customData.device2var10}")
     var device2fun0 = ("#{user.customData.device2fun0}")
     var device2fun1 = ("#{user.customData.device2fun1}")
     var device2fun2 = ("#{user.customData.device2fun2}")
     var device2fun3 = ("#{user.customData.device2fun3}")
-    var device2fun4 = ("#{user.customData.device2fun4}")
-    var device2fun5 = ("#{user.customData.device2fun5}")
-    var device2fun6 = ("#{user.customData.device2fun6}")
-    var device2fun7 = ("#{user.customData.device2fun7}")
-    var device2fun8 = ("#{user.customData.device2fun8}")
-    var device2fun9 = ("#{user.customData.device2fun9}")
     // Device 3
     var device3id = ("#{user.customData.device3id}")
     var device3name = ("#{user.customData.device3name}")
@@ -95,16 +80,11 @@ block body
     var device3var7 = ("#{user.customData.device3var7}")
     var device3var8 = ("#{user.customData.device3var8}")
     var device3var9 = ("#{user.customData.device3var9}")
+    var device3var10 = ("#{user.customData.device3var10}")
     var device3fun0 = ("#{user.customData.device3fun0}")
     var device3fun1 = ("#{user.customData.device3fun1}")
     var device3fun2 = ("#{user.customData.device3fun2}")
     var device3fun3 = ("#{user.customData.device3fun3}")
-    var device3fun4 = ("#{user.customData.device3fun4}")
-    var device3fun5 = ("#{user.customData.device3fun5}")
-    var device3fun6 = ("#{user.customData.device3fun6}")
-    var device3fun7 = ("#{user.customData.device3fun7}")
-    var device3fun8 = ("#{user.customData.device3fun8}")
-    var device3fun9 = ("#{user.customData.device3fun9}")
   .container
       .row.clearfix
         .col-md-12.column
@@ -122,6 +102,9 @@ block body
             .col-md-3.column
           .row.clearfix
             .col-md-3.column
+              /////////////
+              // DEVICE 0
+              /////////////
               .device0.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device0id, 0)', title='Refresh this device')
@@ -134,59 +117,76 @@ block body
                       button.btn.btn-default(type='button', onclick='renameDevice(device0id, 0)') Rename
                     input.form-control(action='/dashboard', method='post', id='0renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables:
                   // Check for variables before displaying
                   -if (user.customData.device0var0 != null)
-                    button(onclick='getVarVal(device0id, device0var0, 0, 0)' title='Refresh this variable') #{user.customData.device0var0}:
+                    h6 Variables:
+                    button(onclick='getVarVal(device0id, device0var0, 0, 0)' title='Refresh this variable' class='varbutton') #{user.customData.device0var0}
                       .varval.device0var0
                       .lastheard.device0var0
                   -if (user.customData.device0var1 != null)
-                    button(onclick='getVarVal(device0id, device0var1, 0, 1)' title='Refresh this variable') #{user.customData.device0var1}
-                    .varval.device0var1
-                    .lastheard.device0var1
+                    button(onclick='getVarVal(device0id, device0var1, 0, 1)' title='Refresh this variable' class='varbutton') #{user.customData.device0var1}
+                      .varval.device0var1
+                      .lastheard.device0var1
                   -if (user.customData.device0var2 != null)
-                    button(onclick='getVarVal(device0id, device0var2, 0, 2)' title='Refresh this variable') #{user.customData.device0var2}
-                    .varval.device0var2
-                    .lastheard.device0var2
+                    button(onclick='getVarVal(device0id, device0var2, 0, 2)' title='Refresh this variable' class='varbutton') #{user.customData.device0var2}
+                      .varval.device0var2
+                      .lastheard.device0var2
                   -if (user.customData.device0var3 != null)
-                    button(onclick='getVarVal(device0id, device0var3, 0, 3)' title='Refresh this variable') #{user.customData.device0var3}
-                    .varval.device0var3
-                    .lastheard.device0var3
+                    button(onclick='getVarVal(device0id, device0var3, 0, 3)' title='Refresh this variable' class='varbutton') #{user.customData.device0var3}
+                      .varval.device0var3
+                      .lastheard.device0var3
                   -if (user.customData.device0var4 != null)
-                    h6 #{user.customData.device0var4} : WEAVE4
+                    button(onclick='getVarVal(device0id, device0var4, 0, 4)' title='Refresh this variable' class='varbutton') #{user.customData.device0var4}
+                      .varval.device0var4
+                      .lastheard.device0var4
                   -if (user.customData.device0var5 != null)
-                    h6 #{user.customData.device0var5} : WEAVE5
+                    button(onclick='getVarVal(device0id, device0var5, 0, 5)' title='Refresh this variable' class='varbutton') #{user.customData.device0var5}
+                      .varval.device0var5
+                      .lastheard.device0var5
                   -if (user.customData.device0var6 != null)
-                    h6 #{user.customData.device0var6} : WEAVE6
+                    button(onclick='getVarVal(device0id, device0var6, 0, 6)' title='Refresh this variable' class='varbutton') #{user.customData.device0var6}
+                      .varval.device0var6
+                      .lastheard.device0var6
                   -if (user.customData.device0var7 != null)
-                    h6 #{user.customData.device0var7} : WEAVE7
+                    button(onclick='getVarVal(device0id, device0var7, 0, 7)' title='Refresh this variable' class='varbutton') #{user.customData.device0var7}
+                      .varval.device0var7
+                      .lastheard.device0var7
                   -if (user.customData.device0var8 != null)
-                    h6 #{user.customData.device0var8} : WEAVE8
+                    button(onclick='getVarVal(device0id, device0var8, 0, 8)' title='Refresh this variable' class='varbutton') #{user.customData.device0var8}
+                      .varval.device0var8
+                      .lastheard.device0var8
                   -if (user.customData.device0var9 != null)
-                    h6 #{user.customData.device0var9} : WEAVE9
-                  hr
-                  h6 Functions:
+                    button(onclick='getVarVal(device0id, device0var9, 0, 9)' title='Refresh this variable' class='varbutton') #{user.customData.device0var9}
+                      .varval.device0var9
+                      .lastheard.device0var9
+                  -if (user.customData.device0var10 != null)
+                    button(onclick='getVarVal(device0id, device0var10, 0, 10)' title='Refresh this variable' class='varbutton') #{user.customData.device0var10}
+                      .varval.device0var10
+                      .lastheard.device0var10
+                  -if (user.customData.device0var0 != null && user.customData.device0fun0 != null)
+                    hr
                   // Check for functions before displaying
                   -if (user.customData.device0fun0 != null)
-                    h6 #{user.customData.device0fun0} : WEAVE
+                    h6 Functions:
+                    .input-group.func0
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device0fun0}
+                      input.form-control(action='/dashboard', method='post', id='0sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device0fun1 != null)
-                    h6 #{user.customData.device0fun1} : WEAVE1
+                    .input-group.func1
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device0fun1}
+                      input.form-control(action='/dashboard', method='post', id='1sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device0fun2 != null)
-                    h6 #{user.customData.device0fun2} : WEAVE2
+                    .input-group.func2
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device0fun2}
+                      input.form-control(action='/dashboard', method='post', id='2sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device0fun3 != null)
-                    h6 #{user.customData.device0fun3} : WEAVE3
-                  -if (user.customData.device0fun4 != null)
-                    h6 #{user.customData.device0fun4} : WEAVE4
-                  -if (user.customData.device0fun5 != null)
-                    h6 #{user.customData.device0fun5} : WEAVE5
-                  -if (user.customData.device0fun6 != null)
-                    h6 #{user.customData.device0fun6} : WEAVE6
-                  -if (user.customData.device0fun7 != null)
-                    h6 #{user.customData.device0fun7} : WEAVE7
-                  -if (user.customData.device0fun8 != null)
-                    h6 #{user.customData.device0fun8} : WEAVE8
-                  -if (user.customData.device0fun9 != null)
-                    h6 #{user.customData.device0fun9} : WEAVE9
+                    .input-group.func3
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device0fun3}
+                      input.form-control(action='/dashboard', method='post', id='3sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device0id}
@@ -195,6 +195,9 @@ block body
                   .footer-ver
                     h6 v #{user.customData.device0ver}
             .col-md-3.column
+              /////////////
+              // DEVICE 1
+              /////////////
               .device1.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device1id, 1)', title='Refresh this device')
@@ -207,50 +210,76 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device1id, 1)') Rename
                       input.form-control(action='/dashboard', method='post', id='1renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables:
                   // Check for variables before displaying
                   -if (user.customData.device1var0 != null)
-                    h6 #{user.customData.device1var0} : WEAVE
+                    h6 Variables:
+                    button(onclick='getVarVal(device1id, device1var0, 0, 0)' title='Refresh this variable' class='varbutton') #{user.customData.device1var0}
+                      .varval.device1var0
+                      .lastheard.device1var0
                   -if (user.customData.device1var1 != null)
-                    h6 #{user.customData.device1var1} : WEAVE1
+                    button(onclick='getVarVal(device1id, device1var1, 0, 1)' title='Refresh this variable' class='varbutton') #{user.customData.device1var1}
+                      .varval.device1var1
+                      .lastheard.device1var1
                   -if (user.customData.device1var2 != null)
-                    h6 #{user.customData.device1var2} : WEAVE2
+                    button(onclick='getVarVal(device1id, device1var2, 0, 2)' title='Refresh this variable' class='varbutton') #{user.customData.device1var2}
+                      .varval.device1var2
+                      .lastheard.device1var2
                   -if (user.customData.device1var3 != null)
-                    h6 #{user.customData.device1var3} : WEAVE3
+                    button(onclick='getVarVal(device1id, device1var3, 0, 3)' title='Refresh this variable' class='varbutton') #{user.customData.device1var3}
+                      .varval.device1var3
+                      .lastheard.device1var3
                   -if (user.customData.device1var4 != null)
-                    h6 #{user.customData.device1var4} : WEAVE4
+                    button(onclick='getVarVal(device1id, device1var4, 0, 4)' title='Refresh this variable' class='varbutton') #{user.customData.device1var4}
+                      .varval.device1var4
+                      .lastheard.device1var4
                   -if (user.customData.device1var5 != null)
-                    h6 #{user.customData.device1var5} : WEAVE5
+                    button(onclick='getVarVal(device1id, device1var5, 0, 5)' title='Refresh this variable' class='varbutton') #{user.customData.device1var5}
+                      .varval.device1var5
+                      .lastheard.device1var5
                   -if (user.customData.device1var6 != null)
-                    h6 #{user.customData.device1var6} : WEAVE6
+                    button(onclick='getVarVal(device1id, device1var6, 0, 6)' title='Refresh this variable' class='varbutton') #{user.customData.device1var6}
+                      .varval.device1var6
+                      .lastheard.device1var6
                   -if (user.customData.device1var7 != null)
-                    h6 #{user.customData.device1var7} : WEAVE7
+                    button(onclick='getVarVal(device1id, device1var7, 0, 7)' title='Refresh this variable' class='varbutton') #{user.customData.device1var7}
+                      .varval.device1var7
+                      .lastheard.device1var7
                   -if (user.customData.device1var8 != null)
-                    h6 #{user.customData.device1var8} : WEAVE8
+                    button(onclick='getVarVal(device1id, device1var8, 0, 8)' title='Refresh this variable' class='varbutton') #{user.customData.device1var8}
+                      .varval.device1var8
+                      .lastheard.device1var8
                   -if (user.customData.device1var9 != null)
-                    h6 #{user.customData.device1var9} : WEAVE9
-                  h6 Functions:
+                    button(onclick='getVarVal(device1id, device1var9, 0, 9)' title='Refresh this variable' class='varbutton') #{user.customData.device1var9}
+                      .varval.device1var9
+                      .lastheard.device1var9
+                  -if (user.customData.device1var10 != null)
+                    button(onclick='getVarVal(device1id, device1var10, 0, 10)' title='Refresh this variable' class='varbutton') #{user.customData.device1var10}
+                      .varval.device1var10
+                      .lastheard.device1var10
+                  -if (user.customData.device1var0 != null && user.customData.device1fun0 != null)
+                    hr
                   // Check for functions before displaying
                   -if (user.customData.device1fun0 != null)
-                    h6 #{user.customData.device1fun0} : WEAVE
+                    h6 Functions:
+                    .input-group.func0
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device1fun0}
+                      input.form-control(action='/dashboard', method='post', id='0sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device1fun1 != null)
-                    h6 #{user.customData.device1fun1} : WEAVE1
+                    .input-group.func1
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device1fun1}
+                      input.form-control(action='/dashboard', method='post', id='1sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device1fun2 != null)
-                    h6 #{user.customData.device1fun2} : WEAVE2
+                    .input-group.func2
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device1fun2}
+                      input.form-control(action='/dashboard', method='post', id='2sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device1fun3 != null)
-                    h6 #{user.customData.device1fun3} : WEAVE3
-                  -if (user.customData.device1fun4 != null)
-                    h6 #{user.customData.device1fun4} : WEAVE4
-                  -if (user.customData.device1fun5 != null)
-                    h6 #{user.customData.device1fun5} : WEAVE5
-                  -if (user.customData.device1fun6 != null)
-                    h6 #{user.customData.device1fun6} : WEAVE6
-                  -if (user.customData.device1fun7 != null)
-                    h6 #{user.customData.device1fun7} : WEAVE7
-                  -if (user.customData.device1fun8 != null)
-                    h6 #{user.customData.device1fun8} : WEAVE8
-                  -if (user.customData.device1fun9 != null)
-                    h6 #{user.customData.device1fun9} : WEAVE9
+                    .input-group.func3
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device1fun3}
+                      input.form-control(action='/dashboard', method='post', id='3sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device1id}
@@ -259,6 +288,9 @@ block body
                   .footer-ver
                     h6 v #{user.customData.device1ver}
             .col-md-3.column
+              /////////////
+              // DEVICE 2
+              /////////////
               .device2.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device2id, 2)', title='Refresh this device')
@@ -271,50 +303,76 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device2id, 2)') Rename
                       input.form-control(action='/dashboard', method='post', id='2renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables:
                   // Check for variables before displaying
                   -if (user.customData.device2var0 != null)
-                    h6 #{user.customData.device2var0} : WEAVE
+                    h6 Variables:
+                    button(onclick='getVarVal(device2id, device2var0, 0, 0)' title='Refresh this variable' class='varbutton') #{user.customData.device2var0}
+                      .varval.device2var0
+                      .lastheard.device2var0
                   -if (user.customData.device2var1 != null)
-                    h6 #{user.customData.device2var1} : WEAVE1
+                    button(onclick='getVarVal(device2id, device2var1, 0, 1)' title='Refresh this variable' class='varbutton') #{user.customData.device2var1}
+                      .varval.device2var1
+                      .lastheard.device2var1
                   -if (user.customData.device2var2 != null)
-                    h6 #{user.customData.device2var2} : WEAVE2
+                    button(onclick='getVarVal(device2id, device2var2, 0, 2)' title='Refresh this variable' class='varbutton') #{user.customData.device2var2}
+                      .varval.device2var2
+                      .lastheard.device2var2
                   -if (user.customData.device2var3 != null)
-                    h6 #{user.customData.device2var3} : WEAVE3
+                    button(onclick='getVarVal(device2id, device2var3, 0, 3)' title='Refresh this variable' class='varbutton') #{user.customData.device2var3}
+                      .varval.device2var3
+                      .lastheard.device2var3
                   -if (user.customData.device2var4 != null)
-                    h6 #{user.customData.device2var4} : WEAVE4
+                    button(onclick='getVarVal(device2id, device2var4, 0, 4)' title='Refresh this variable' class='varbutton') #{user.customData.device2var4}
+                      .varval.device2var4
+                      .lastheard.device2var4
                   -if (user.customData.device2var5 != null)
-                    h6 #{user.customData.device2var5} : WEAVE5
+                    button(onclick='getVarVal(device2id, device2var5, 0, 5)' title='Refresh this variable' class='varbutton') #{user.customData.device2var5}
+                      .varval.device2var5
+                      .lastheard.device2var5
                   -if (user.customData.device2var6 != null)
-                    h6 #{user.customData.device2var6} : WEAVE6
+                    button(onclick='getVarVal(device2id, device2var6, 0, 6)' title='Refresh this variable' class='varbutton') #{user.customData.device2var6}
+                      .varval.device2var6
+                      .lastheard.device2var6
                   -if (user.customData.device2var7 != null)
-                    h6 #{user.customData.device2var7} : WEAVE7
+                    button(onclick='getVarVal(device2id, device2var7, 0, 7)' title='Refresh this variable' class='varbutton') #{user.customData.device2var7}
+                      .varval.device2var7
+                      .lastheard.device2var7
                   -if (user.customData.device2var8 != null)
-                    h6 #{user.customData.device2var8} : WEAVE8
+                    button(onclick='getVarVal(device2id, device2var8, 0, 8)' title='Refresh this variable' class='varbutton') #{user.customData.device2var8}
+                      .varval.device2var8
+                      .lastheard.device2var8
                   -if (user.customData.device2var9 != null)
-                    h6 #{user.customData.device2var9} : WEAVE9
-                  h6 Functions:
+                    button(onclick='getVarVal(device2id, device2var9, 0, 9)' title='Refresh this variable' class='varbutton') #{user.customData.device2var9}
+                      .varval.device2var9
+                      .lastheard.device2var9
+                  -if (user.customData.device2var10 != null)
+                    button(onclick='getVarVal(device2id, device2var10, 0, 10)' title='Refresh this variable' class='varbutton') #{user.customData.device2var10}
+                      .varval.device2var10
+                      .lastheard.device2var10
+                  -if (user.customData.device2var0 != null && user.customData.device2fun0 != null)
+                    hr
                   // Check for functions before displaying
                   -if (user.customData.device2fun0 != null)
-                    h6 #{user.customData.device2fun0} : WEAVE
+                    h6 Functions:
+                    .input-group.func0
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device2fun0}
+                      input.form-control(action='/dashboard', method='post', id='0sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device2fun1 != null)
-                    h6 #{user.customData.device2fun1} : WEAVE1
+                    .input-group.func1
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device2fun1}
+                      input.form-control(action='/dashboard', method='post', id='1sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device2fun2 != null)
-                    h6 #{user.customData.device2fun2} : WEAVE2
+                    .input-group.func2
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device2fun2}
+                      input.form-control(action='/dashboard', method='post', id='2sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device2fun3 != null)
-                    h6 #{user.customData.device2fun3} : WEAVE3
-                  -if (user.customData.device2fun4 != null)
-                    h6 #{user.customData.device2fun4} : WEAVE4
-                  -if (user.customData.device2fun5 != null)
-                    h6 #{user.customData.device2fun5} : WEAVE5
-                  -if (user.customData.device2fun6 != null)
-                    h6 #{user.customData.device2fun6} : WEAVE6
-                  -if (user.customData.device2fun7 != null)
-                    h6 #{user.customData.device2fun7} : WEAVE7
-                  -if (user.customData.device2fun8 != null)
-                    h6 #{user.customData.device2fun8} : WEAVE8
-                  -if (user.customData.device2fun9 != null)
-                    h6 #{user.customData.device2fun9} : WEAVE9
+                    .input-group.func3
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device2fun3}
+                      input.form-control(action='/dashboard', method='post', id='3sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device2id}
@@ -323,6 +381,9 @@ block body
                   .footer-ver
                     h6 v #{user.customData.device2ver}
             .col-md-3.column
+              /////////////
+              // DEVICE 3
+              /////////////
               .device3.panel.panel-warning
                 .panel-heading
                   button.rename(onclick='getDetails(device3id, 3)', title='Refresh this device')
@@ -335,50 +396,76 @@ block body
                         button.btn.btn-default(type='button', onclick='renameDevice(device3id, 3)') Rename
                       input.form-control(action='/dashboard', method='post', id='3renameto', type='text', placeholder='Rename device to', name='renameto')
                 .panel-body
-                  h6 Variables:
                   // Check for variables before displaying
                   -if (user.customData.device3var0 != null)
-                    h6 #{user.customData.device3var0} : WEAVE
+                    h6 Variables:
+                    button(onclick='getVarVal(device3id, device3var0, 0, 0)' title='Refresh this variable' class='varbutton') #{user.customData.device3var0}
+                      .varval.device3var0
+                      .lastheard.device3var0
                   -if (user.customData.device3var1 != null)
-                    h6 #{user.customData.device3var1} : WEAVE1
+                    button(onclick='getVarVal(device3id, device3var1, 0, 1)' title='Refresh this variable' class='varbutton') #{user.customData.device3var1}
+                      .varval.device3var1
+                      .lastheard.device3var1
                   -if (user.customData.device3var2 != null)
-                    h6 #{user.customData.device3var2} : WEAVE2
+                    button(onclick='getVarVal(device3id, device3var2, 0, 2)' title='Refresh this variable' class='varbutton') #{user.customData.device3var2}
+                      .varval.device3var2
+                      .lastheard.device3var2
                   -if (user.customData.device3var3 != null)
-                    h6 #{user.customData.device3var3} : WEAVE3
+                    button(onclick='getVarVal(device3id, device3var3, 0, 3)' title='Refresh this variable' class='varbutton') #{user.customData.device3var3}
+                      .varval.device3var3
+                      .lastheard.device3var3
                   -if (user.customData.device3var4 != null)
-                    h6 #{user.customData.device3var4} : WEAVE4
+                    button(onclick='getVarVal(device3id, device3var4, 0, 4)' title='Refresh this variable' class='varbutton') #{user.customData.device3var4}
+                      .varval.device3var4
+                      .lastheard.device3var4
                   -if (user.customData.device3var5 != null)
-                    h6 #{user.customData.device3var5} : WEAVE5
+                    button(onclick='getVarVal(device3id, device3var5, 0, 5)' title='Refresh this variable' class='varbutton') #{user.customData.device3var5}
+                      .varval.device3var5
+                      .lastheard.device3var5
                   -if (user.customData.device3var6 != null)
-                    h6 #{user.customData.device3var6} : WEAVE6
+                    button(onclick='getVarVal(device3id, device3var6, 0, 6)' title='Refresh this variable' class='varbutton') #{user.customData.device3var6}
+                      .varval.device3var6
+                      .lastheard.device3var6
                   -if (user.customData.device3var7 != null)
-                    h6 #{user.customData.device3var7} : WEAVE7
+                    button(onclick='getVarVal(device3id, device3var7, 0, 7)' title='Refresh this variable' class='varbutton') #{user.customData.device3var7}
+                      .varval.device3var7
+                      .lastheard.device3var7
                   -if (user.customData.device3var8 != null)
-                    h6 #{user.customData.device3var8} : WEAVE8
+                    button(onclick='getVarVal(device3id, device3var8, 0, 8)' title='Refresh this variable' class='varbutton') #{user.customData.device3var8}
+                      .varval.device3var8
+                      .lastheard.device3var8
                   -if (user.customData.device3var9 != null)
-                    h6 #{user.customData.device3var9} : WEAVE9
-                  h6 Functions:
+                    button(onclick='getVarVal(device3id, device3var9, 0, 9)' title='Refresh this variable' class='varbutton') #{user.customData.device3var9}
+                      .varval.device3var9
+                      .lastheard.device3var9
+                  -if (user.customData.device3var10 != null)
+                    button(onclick='getVarVal(device3id, device3var10, 0, 10)' title='Refresh this variable' class='varbutton') #{user.customData.device3var10}
+                      .varval.device3var10
+                      .lastheard.device3var10
+                  -if (user.customData.device3var0 != null && user.customData.device3fun0 != null)
+                    hr
                   // Check for functions before displaying
                   -if (user.customData.device3fun0 != null)
-                    h6 #{user.customData.device3fun0} : WEAVE
+                    h6 Functions:
+                    .input-group.func0
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device3fun0}
+                      input.form-control(action='/dashboard', method='post', id='0sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device3fun1 != null)
-                    h6 #{user.customData.device3fun1} : WEAVE1
+                    .input-group.func1
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device3fun1}
+                      input.form-control(action='/dashboard', method='post', id='1sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device3fun2 != null)
-                    h6 #{user.customData.device3fun2} : WEAVE2
+                    .input-group.func2
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device3fun2}
+                      input.form-control(action='/dashboard', method='post', id='2sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                   -if (user.customData.device3fun3 != null)
-                    h6 #{user.customData.device3fun3} : WEAVE3
-                  -if (user.customData.device3fun4 != null)
-                    h6 #{user.customData.device3fun4} : WEAVE4
-                  -if (user.customData.device3fun5 != null)
-                    h6 #{user.customData.device3fun5} : WEAVE5
-                  -if (user.customData.device3fun6 != null)
-                    h6 #{user.customData.device3fun6} : WEAVE6
-                  -if (user.customData.device3fun7 != null)
-                    h6 #{user.customData.device3fun7} : WEAVE7
-                  -if (user.customData.device3fun8 != null)
-                    h6 #{user.customData.device3fun8} : WEAVE8
-                  -if (user.customData.device3fun9 != null)
-                    h6 #{user.customData.device3fun9} : WEAVE9
+                    .input-group.func3
+                      span.input-group-btn
+                        button.btn.btn-default(type='button', onclick='RunSparkFunc(x, x)') #{user.customData.device3fun3}
+                      input.form-control(action='/dashboard', method='post', id='3sparkfunc', type='text', placeholder='0,0', name='sparkfunc')
                 .panel-footer
                   .footer-id
                     h6 ID: #{user.customData.device3id}
