@@ -84,7 +84,7 @@ function saveDevices() {
         console.log('Devices: ', devices);
         console.log('Saving devices done.');
         $('#spinner').hide().empty();
-        //window.location.reload();  // comment for better debug (console won't refresh)
+        window.location.reload();  // comment for better debug (console won't refresh)
         return;
       }
 
