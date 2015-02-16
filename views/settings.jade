@@ -9,6 +9,7 @@ block body
       .col-md-8.column
         .settings.panel.panel-info
           .panel-heading
+            button(onclick='getDevices()', class='getdevbut') Get Devices
             button.remove-circle(onclick='delToken()', title='Remove token')
               .glyphicon.glyphicon-remove-circle(aria-hidden='true')
             button.wrench(onclick='saveToken()', title='Refresh token')
