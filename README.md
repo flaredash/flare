@@ -1,6 +1,11 @@
 # flare
 Flare, a Spark dashboard.
+
+# usage instructions
+Visit http://flaredashboard.herokuapp.com and create a user.
+
 # setup instructions
+You can of course set this up yourself via your own Stormpath account. Instructions to come.
 
 # development notes
 Using http://hackpad.com for development/wishlist notes - send Baird an email for access.
