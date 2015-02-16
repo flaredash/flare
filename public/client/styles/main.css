@@ -11,6 +11,14 @@ ul.nav.navbar-nav.navbar-right {
   padding-right: 15px; /* Makes right nav padded from right edge */
 }
 
+/* Get devices button */
+
+button.getdevbut {
+  float: right;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
 /* pads rename field */
 .input-group { padding-top: 5px; }
 /* increase device name, push title left*/
@@ -63,10 +71,6 @@ button.varbutton {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  /*shadow*/
-/*  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
-  box-shadow: 0 8px 6px -6px black;*/
 }
 
 .panel-body h6 {
@@ -84,6 +88,9 @@ button.varbutton {
 .device1.panel { display: none; }
 .device2.panel { display: none; }
 .device3.panel { display: none; }
+
+/* adjust function button width to allow for 12 char name */
+button#funcbut.btn.btn-default {width: 130px;}
 
 /* dont show dash warning by default*/
 .alert.alert-dismissable.alert-danger { display: none; }
